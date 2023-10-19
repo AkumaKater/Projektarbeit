@@ -1,0 +1,7 @@
+LayerSizes=784,80,10
+SplitIndex=60000
+TrainingCycles=30
+LearnRate=0.01
+BatchSize=1
+PerformanceNotes=FFN-Ausgabe/BatchTest/PN(BatchTest-LR)V7.html
+Visualization=FFN-Ausgabe/Visualization.html
