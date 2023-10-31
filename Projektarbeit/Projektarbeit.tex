@@ -29,6 +29,10 @@
     tabsize=2
 }
 
+\usepackage{setspace}
+\onehalfspacing
+%\doublespacing
+
 \lstset{literate=%
     {Ö}{{\"O}}1
     {Ä}{{\"A}}1
@@ -49,12 +53,6 @@
     \addtolength{\topmargin}{-3cm}
     \addtolength{\textheight}{3cm}
 \usepackage{graphicx}
-
-\usepackage{setspace}
-\onehalfspacing
-%\doublespacing
-
-
 \begin{document}
 
 \maketitle
@@ -67,30 +65,30 @@
 
 \section{Einleitung}
 \subsection{Motivation}
-Neuronale Netzwerke werden vor allem für Klassifikationsverfahren verwendet. In der Praxis gibt es viele Anwendungsbereiche, in denen es vorteilhaft ist, große Mengen von Daten automatisch zu klassifizieren. Einige Beispiele wären die Bild- und Schriffterkennung, die man dazu verwendet, Kennschilder von Autos maschinel auszulesen. Solche Technologien werden immer häufiger auf Parkplätzen und Autobahnen eingesetzt. Aber auch fast jedes Handy kann mittlerweile Schrifft erkennen, die mit der Kammera aufgenommen wird. Auch in der Medizin, beim Auswerten von Röntgenbildern, in der Biologie, zum erkennen von Pflanzen auf Fotos und noch vielem mehr werden Neuronale Netzwerke inzwischen eingesetzt.\\  
-Es gibt kaum einen Bereich, in dem sich nicht eine mögliche Anwendung für Neuronale Netzwerke finden lässt. Ganz besonders aufwändige Netzwerke werden mittlerweile auch für konstruktive Aufgaben verwendet, wie zum Beispiel Sprachmodelle wie ChatGPT und Bilder generierende KIs wie Midjourney.
+Neuronale Netzwerke werden vor allem für Klassifikationsverfahren verwendet. In der Praxis gibt es viele Anwendungsbereiche, in denen es vorteilhaft ist, große Mengen von Daten automatisch zu klassifizieren. Einige Beispiele, wären die Bild- und Schriffterkennung, die man dazu verwendet, Kennschilder von Autos maschinell auszulesen. Solche Technologien werden immer häufiger auf Parkplätzen und Autobahnen eingesetzt. Aber, auch fast jedes Handy kann mittlerweile Schrift erkennen, die mit der Kamera aufgenommen wird. Auch in der Medizin, beim Auswerten von Röntgenbildern, in der Biologie, zum Erkennen von Pflanzen auf Fotos und noch vielem mehr, werden Neuronale Netzwerke inzwischen eingesetzt.\\  
+Es gibt kaum einen Bereich, in dem sich nicht eine mögliche Anwendung für Neuronale Netzwerke finden lässt. Ganz besonders aufwändige Netzwerke, werden mittlerweile auch für konstruktive Aufgaben verwendet, wie zum Beispiel Sprachmodelle, wie ChatGPT und Bilder generierende KIs, wie Midjourney.
 Typische Probleme, bei welchen neuronale Netzwerke eingesetzt werden, sind komplexe Aufgaben, mit gigantischen Datenmengen.\\
-Eine Aufgabe ist zu Komplex, wenn eine Lösung nicht manuell Programmiert werden kann, unter anderem bei der Bilderkennung. Außerdem sollen solche Probleme Automatisiert werden, weil es sich nicht lohnt, Menschen dazu einzusetzten. 
-In solchen Fällen werden neuronale Netzwere eingesetzt.\\
-Im laufe der zeit sind die Modernen Netzwerke immer Komplexer geworden, und liefern nahezu menschliche Ergebnisse, im Bruchteil der zeit, die menschen dafür brauchen würden. Aber wie genau funktioniert so ein Netzwerk?
+Eine Aufgabe ist zu komplex, wenn eine Lösung nicht manuell programmiert werden kann, unter anderem, bei der Bilderkennung. Außerdem sollten solche Probleme automatisiert werden, weil es sich nicht lohnt, Menschen dazu einzusetzten. 
+In solchen Fällen, werden neuronale Netzwerke eingesetzt.\\
+Im Laufe der Zeit sind die modernen Netzwerke immer komplexer geworden, und liefern nahezu menschliche Ergebnisse, im Bruchteil der Zeit, die Menschen dafür brauchen würden. Aber wie genau funktioniert so ein Netzwerk?
 \subsection{Zielsetzung}
-In dieser Arbeit soll ein simples Feed Forward Neural Network programmiert werden, um die Einzelnen Bestandteile zu erklären und zu Demonstrieren. Das Netzwerk wird in Java Programmiert und am Ende dieser Arbeit mit verschiedenen Konfigurationen getestet und verglichen.
+In dieser Arbeit, soll ein simples Feed Forward Neural Network programmiert werden, um die einzelnen Bestandteile zu erklären und zu Demonstrieren. Das Netzwerk wird in Java Programmiert und, am Ende dieser Arbeit, mit verschiedenen Konfigurationen getestet und verglichen.
 \subsection{Abgrenzung}
-In dieser Arbeit soll ein Grundlegendes und einfaches neuronales Netzwerk Programmiert, erklärt und getestet werden. Die Einfachste Form eines solchen Netzwerkes ist ein Feed Forward Netzwerk.  
-Das Netzwerk wird in java Programmiert, da der Verfasser der Arbeit mit dieser Programmiersprache am besten vertraut ist.\\
-Zunächst soll das einfachste Funktionsfähige Netztwerk erarbeitet und getestet werden.\\
-Danach wird das Netzwerk um Biases und Batches erweitert, wobei deren nutzen erläutert wird. Das heißt dass das netzwerk über Schichten und Knoten verfügt, in der Lage ist Sinvolle Ergebnisse zu liefern und die Grundfunktionen vorhanden sind, diese sind initialisierung, Querry und Learn/Backpropagation Algorithmus. \\
-Darüber hinaus wird das Netzwerk Tabelarisch ausgaben über die erziehlte Genauigkeit auf den Trainings und test Datensätzen ausgeben, um anpassungen an den Einstellungen vergleichbar zu machen.  \\
-Der Datensatz, der zum Trainieren und Testen des netzwerkes verwendet wird, ist der MNIST Datensatz, welcher häufig für solche Anwendungen verwendet wird. Der MNIST Datensatz besteht aus Bildern handgeschriebener Zahlen, die gelabelt sind. Darin enthalten sind 60.000 Trainings Bilder und 10.000 test Bilder, welche alle bereits zum trainieren vorbereitet wurden, das heißt sind sind vereinheitlicht auf die gleiche Bildgröße und ausrichtung. Außerdem ist der Datensatz unsortiert, was für den Lernprozess notwendig ist.
-Darüber hinaus werden keine weiteren verbesserungen vorgenommen, wie zum Beispiel Regularisierungsverfahren oder andere Aufbauten, wie die Konvolutional networks, die mitlerweile eher für die Bilderkennunng verwendet werden. Dies würde nicht dem umfang dieser Arbeit entsprechen.
+In dieser Arbeit, soll ein grundlegendes und einfaches neuronales Netzwerk Programmiert, erklärt und getestet werden. Die einfachste Form eines solchen Netzwerkes ist ein Feed Forward Netzwerk.  
+Das Netzwerk wird in Java Programmiert, da der Verfasser der Arbeit, mit dieser Programmiersprache am besten vertraut ist.\\
+Zunächst, soll das einfachste Funktionsfähige Netzwerk erarbeitet und getestet werden.\\
+Danach, wird das Netzwerk um Biases und Batches erweitert, währenddessen deren Nutzen erläutert wird. Das heißt, dass das Netzwerk über Schichten und Knoten verfügt, in der Lage ist sinnvolle Ergebnisse zu liefern und die Grundfunktionen vorhanden sind. Diese sind Initialisierung, Querry und Learn/Backpropagation Algorithmus. \\
+Darüber hinaus wird das Netzwerk tabellarisch Ausgaben über die erzielte Genauigkeit auf den Trainings- und Test-Datensätzen ausgeben, um Anpassungen an den Einstellungen, vergleichbar zu machen.  \\
+Der Datensatz, der zum Trainieren und Testen des Netzwerkes verwendet wird, ist der MNIST-Datensatz, welcher häufig für solche Anwendungen verwendet wird. Der MNIST-Datensatz, besteht aus Bildern handgeschriebener Zahlen, die gelabelt sind. Darin enthalten, sind 60.000 Trainingsbilder und 10.000 Testbilder, welche alle bereits zum Trainieren vorbereitet wurden, das heißt, sie sind vereinheitlicht, auf die gleiche Bildgröße und Ausrichtung. Außerdem ist der Datensatz unsortiert, was für den Lernprozess notwendig ist.
+Darüber hinaus werden keine weiteren Verbesserungen vorgenommen, wie zum Beispiel Regularisierungsverfahren oder andere Aufbauten, wie die convolutional networks, die mittlerweile eher für die Bilderkennung verwendet werden. Dies würde nicht dem Umfang dieser Arbeit entsprechen.
 \subsection{Aufbau}
-Die Gliederung dieser Arbeit entspricht einer Organischen herangehensweise oder einer Anleitung, wie ein netzwerk aufgebaut wird. jedes Kapitel entspricht einem Teil des netzwerkes, also den Funktionen Initialisierung, Querry oder Abfrage und Lernen oder backpropagation Algorithmus. Jedes der kapitel gibt startet mit einer Übersicht über die Funktionalität, erläutert die Theorie dahinter, teilweise auch mathematisch, und schließt mit dem daraus resultierenden Code ab. 
-Danach werden die Tools vorgestellt, die verwendet werde, um die Ergebnisse des netzwerkes Sichtbar zu machen. Diese sind im Anhang vorhanden. 
-Mit diesen Tools werden testreihen erstellt, mit denne verschiedene Konfigurationen des netzwerkes verglichen werden können. Solche Test werden danach auch jeweils für die erweterung um Biases und die Erweiterung um Batches erstellt, um die änderungen am netzwerk zu verstehen.
+Die Gliederung dieser Arbeit, entspricht einer organischen Herangehensweise oder einer Anleitung, wie ein Netzwerk aufgebaut wird. Jedes Kapitel entspricht einem Teil des Netzwerkes, also den Funktionen, der Initialisierung, der Querry oder Abfrage und dem Lern- oder Backpropagation-Algorithmus. Jedes der Kapitel startet mit einer Übersicht, über die Funktionalität, erläutert die Theorie dahinter, teilweise auch mathematisch, und schließt mit dem daraus resultierenden Code ab. 
+Danach werden die Tools vorgestellt, die verwendet werden, um die Ergebnisse des Netzwerkes sichtbar zu machen. Diese sind im Anhang verzeichnet. 
+Mit diesen Tools werden Testreihen erstellt, mit denen verschiedene Konfigurationen des Netzwerkes verglichen werden können. Solche Test werden danach auch jeweils für die Erweiterung um Biases und die Erweiterung um Batches erstellt, um die Änderungen am Netzwerk zu verstehen.
 \section{Initialisierung}
-\subsection{Grundgedanke}Bei der Initialisierung des Netzwerkes soll eine Instanz der Klasse NeuralNetwork erstellt werden. Wichtig ist hierbei, dass das Netzwerk über alle Variablen verfügt, die hierbei wichtig sind, und dass es im Konstruktor möglich ist, wichtige Eigenschaften so dynamisch anzulegen, wie es nur geht. Für den Learn Algorithmus ist später eine LearnRate wichtig, das wird später im Backpropagation Algorithmus wichtig. Abgesehen davon, muss es möglich sein, die Menge der versteckten Schichten, sowie die Menge der Nodes auf diesen festzulegen. für eine leichtere Lesbarkeit, und leichtere Skalierung des Netzwerks, ist es Vorteilhaft, die Schichten, oder auch Layer, in einer eigenen Klasse festzulegen.Diese Layer müssen also auch vorbereitet werden. Wie bereits erwähnt, ist jede Schicht durch Kanten mit der nächsten Schicht verbunden.  Von jedem Knoten aus dem Input Layer gehen Kanten an jeweils jeden Knoten der ersten versteckten Schicht. Und genau so ist es zwischen der Versteckten Schicht zu jeder nachfolgenden versteckten Schicht, bis hin zum Output Layer. Jede diese Kanten ist gewichtet, und diese gewichte müssen in jedem Layer gespeichert werden. Das Input Layer ist mehr Symbolisch dargestellt, da es sich bei den Knoten dieser Schicht nur um die Inputs handelt, mit denen das Netzwerk gefüttert werden soll. Bezogen auf den MNIST Datensatz, bedeutet das, dass jeder Pixel eines Bildes ein Knoten der Input Layer ist. Daraus ergibt sich bei 28 X 28 Pixeln eine Input Schicht von 784 Knoten. Diese unterliegen natürlich noch keine Activation Function/Schwellwertfunktion, und werden daher direkt in die erste versteckte Schicht geleitet. Die Implementation dieser Schichten kann von hier an generalisiert werden.Jede Schicht sollte alle Gewichte der Kanten speichern, mit denen sie mit der vorherigen Schicht verbunden sind. Diese Gewichte lassen sich in Form einer Matrix speichern. Die erste Dimension dieser Matrix entspricht der Anzahl der Inputs, die der Layer aus der vorherigen Schicht erhält, also die Anzahl der Outputs der vorherigen Schicht. Die Zweite Dimension entspricht der Knoten, über die das Layer verfügt.Ein bestimmtes Gewicht kann also so notiert werden:Die Kante von dem 3ten Knoten der Input Schicht zum 2ten Knoten der versteckten Schicht wird gewichtet durch das Gewicht $W_{3|2}$.Das Layer braucht, im Initialisiert zu werden, also lediglich zwei Werte, die Anzahl der Input Nodes, und die Anzahl der eigenen Output Nodes. Daraus kann ein 2-dimensionales Array erstellt werden, mit eben diesen Abmaßen. An dieser Stelle muss darauf hingewiesen werden, dass es Sinnvoll ist, die Matrix von vornherein transponiert zu speichern, da es für die meisten Rechnungen Notwendig sein wird, diese ohnehin zu Transponieren.
+\subsection{Grundgedanke}Bei der Initialisierung des Netzwerkes soll eine Instanz der Klasse NeuralNetwork erstellt werden. Wichtig, ist hierbei, dass das Netzwerk über alle Variabeln verfügt, die hierbei wichtig sind und, dass es im Konstruktor möglich ist, wichtige Eigenschaften so dynamisch anzulegen, wie es nur geht. Für den Learn-Algorithmus ist später eine LearnRate wichtig, das wird später im Backpropagation-Algorithmus erläutert. Abgesehen davon, muss es möglich sein, die Menge der versteckten Schichten, sowie die Menge der Nodes, auf diesen festzulegen. Für eine leichtere Lesbarkeit und leichtere Skalierung des Netzwerks, ist es vorteilhaft, die Schichten, oder auch Layer, in einer eigenen Klasse festzulegen. Diese Layer, müssen also auch vorbereitet werden. Wie bereits erwähnt, ist jede Schicht, durch Kanten, mit der nächsten Schicht verbunden.  Von jedem Knoten aus dem Input Layer, gehen Kanten an jeweils jeden Knoten der ersten versteckten Schicht. Und genau so ist es zwischen der versteckten Schicht, zu jeder nachfolgenden versteckten Schicht, bis hin zum Output-Layer. Jede diese Kanten ist gewichtet und diese Gewichte, müssen in jedem Layer gespeichert werden. Der Input-Layer, ist mehr symbolisch dargestellt, da es sich bei den Knoten dieser Schicht, nur um die Inputs handelt, mit denen das Netzwerk gefüttert werden soll. Bezogen auf den MNIST-Datensatz, bedeutet das, dass jeder Pixel eines Bildes, ein Knoten der Input-Layer ist. Daraus ergibt sich bei 28 X 28 Pixeln, eine Input-Schicht, von 784 Knoten. Diese unterliegen natürlich noch keiner Activation-Function/Schwellwertfunktion und werden daher, direkt in die erste versteckte Schicht geleitet. Die Implementation dieser Schichten, kann von hier an generalisiert werden. Jede Schicht sollte alle Gewichte, der Kanten speichern, mit denen sie mit der vorherigen Schicht verbunden sind. Diese Gewichte lassen sich in Form einer Matrix speichern. Die erste Dimension dieser Matrix, entspricht der Anzahl der Inputs, die der Layer aus der vorherigen Schicht erhält, also die Anzahl der Outputs der vorherigen Schicht. Die Zweite Dimension, entspricht den Knoten, über die der Layer verfügt. Ein bestimmtes Gewicht, kann also, so notiert werden: Die Kante von dem dritten Knoten der Input Schicht, zum zweiten Knoten der versteckten Schicht, wird gewichtet, durch das Gewicht $W_{3|2}$. Der Layer braucht, um initialisiert zu werden, also lediglich zwei Werte, die Anzahl der Input-Nodes und die Anzahl der eigenen Output-Nodes. Daraus kann ein zwei-dimensionales Array erstellt werden, mit eben diesen Abmaßen. An dieser Stelle muss darauf hingewiesen werden, dass es sinnvoll ist, die Matrix von vornherein transponiert zu speichern, da es für die meisten Rechnungen notwendig sein wird, diese ohnehin zu transponieren.
 \subsection{Code}
-Das Neuronale Netzwerk braucht zuerst ein Array, in welchem alle Layer gespeichert sind, außerdem ein Double für die LearnRate.Der Konstruktor hat zunächst die Parameter für die learnRate, und dann noch "variable arguments", welche die jeweilige Anzahl an Knoten pro Schicht angeben sollen.Wie oben erklärt, ist es nicht Notwendig, eine eigene Schicht für die Input Schicht zu instantiieren. Daher fängt die For-Schleife auch erst bei 1 an. Der erste integer, der übergeben wird, muss die Größe der Input Schicht wiedergeben, beim MNIST Datensatz also 784. Der letzte Integer gibt die Größe der Output Schicht an. Die Output Schicht muss so groß dein, wie die Menge, der möglichen Antworten. Bei dem MNIST handelt es sich um die Handschriftlichen zahlen von 0 - 9, daher muss die Output Schicht 10 Knoten haben. Alle anderen Integer, die dazwischen eingetragen werden, entsprechen der Größe einer jeden versteckten Schicht.
+Das Neuronale Netzwerk braucht zuerst ein Array, in welchem alle Layer gespeichert sind. Außerdem braucht es ein Double für die LearnRate. Der Konstruktor hat zunächst die Parameter für die LearnRate, und dann noch "variable arguments", welche die jeweilige Anzahl an Knoten pro Schicht, angeben sollen. Wie oben erklärt, ist es nicht notwendig, eine eigene Schicht für die Input Schicht zu instantiieren. Daher, fängt die For-Schleife, auch erst bei 1 an. Der erste Integer, der übergeben wird, muss die Größe der Input-Schicht wiedergeben, beim MNIST-Datensatz also 784. Der letzte Integer, gibt die Größe der Output-Schicht an. Die Output-Schicht, muss so groß sein, wie die Menge, der möglichen Antworten. Bei dem MNIST-Datensatz, handelt es sich um die handschriftlichen Zahlen von 0 - 9. Daher muss die Output Schicht 10 Knoten haben. Alle anderen Integer, die dazwischen eingetragen werden, entsprechen der Größe einer jeden versteckten Schicht.
 \begin{lstlisting}[language=Java]
 public class NeuralNetwork {
     Layer[] layers;
@@ -103,7 +101,7 @@ public class NeuralNetwork {
         this.learnRate = learnRate;
     }
 }
-\end{lstlisting}Um ein Layer zu erstellen, wird, wie oben beschrieben, die Menge der Outputs der vorherigen Schicht, und die Menge der eigenen Knoten gebraucht, damit die Gewichtsmatrix mit den richtigen Dimensionen instantiiert wird.Bei diesem Schritt ist es wichtig, dass die Gewichte mit zufälligen Werten vor instantiiert werden. Das kann dabei helfen, dass das Netzwerk durch das Zufallsprinzip bereits näher an einem Globalen Minimum der Error Funktion startet, als an einem schlechteren Lokalen Minimum. Außerdem vermeidet man dadurch auch Symmetrie: Wenn alle gewichte mit dem gleichen Wert anfangen, ist auch die Änderungsrate meist die gleiche. Dadurch kommt es vor, dass sich die Neuronen im schlimmsten Fall auf die gleichen Merkmale konzentrieren. Die Vorbelegung dieser Arrays verlagern wir in diesem Beispiel auf eine andere Klasse, um die Hauptklassen hier leserlich zu halten. Der Gesamte Code ist im Anhang zu finden.Die Gewichtsmatrix wird hier bereits transponiert aufgebaut.\begin{lstlisting}[language=Java]
+\end{lstlisting}Um ein Layer zu erstellen, wird, wie oben beschrieben, die Menge der Outputs der vorherigen Schicht und die Menge der eigenen Knoten gebraucht, damit die Gewichtsmatrix mit den richtigen Dimensionen instantiiert wird. Bei diesem Schritt ist es wichtig, dass die Gewichte mit zufälligen Werten vor-instantiiert werden. Das kann dabei helfen, dass das Netzwerk, durch das Zufallsprinzip bereits näher an einem globalen Minimum der Error-Funktion startet, als an einem schlechteren lokalen Minimum. Außerdem vermeidet man dadurch auch Symmetrie: Wenn alle Gewichte mit dem gleichen Wert anfangen, ist auch die Änderungsrate meist die gleiche. Dadurch kommt es vor, dass sich die Neuronen, im schlimmsten Fall auf die gleichen Merkmale konzentrieren. Die Vorbelegung dieser Arrays verlagern wir, in diesem Beispiel, auf eine andere Klasse, um die Hauptklassen hier leserlich zu halten. Der Gesamte Code ist im Anhang zu finden. Die Gewichtsmatrix wird hier bereits transponiert aufgebaut.\begin{lstlisting}[language=Java]
 public class Layer {    int numInputNodes, numOutputNodes;
     double[][] weights;    public Layer(int numInputNodes, int numOutputNodes) {
         this.numInputNodes = numInputNodes;
@@ -123,7 +121,7 @@ Das heißt also, dass die Funktion erstmal im "NeuralNetwork" die Inputs braucht
 \end{lstlisting}\subsection{Grundgedanke CalculateOutputs}Im Layer Skript müssen die Outputs berechnet werden. Dazu können wir uns die Ursprüngliche Inspiration für neuronale Netzwerke ansehen, das Neuron!
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.40]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20230912175903.png}
+\includegraphics[scale=0.40]{./Images/Pasted image 20230912175903.png}
 \caption{Das Neuron}
 \label{Was kommt hier rein?}
 \end{figure}
@@ -138,13 +136,13 @@ Wichtig sind bei dem Neuron die folgenden Bestandteile:
   Genau wie bei dem Neuron, wird in dem Neuronalen Netz zuerst jeder Input in jeden Knoten geleitet, dort dann verarbeitet, und die Ergebnisse dieser Verarbeitung werden an die nächste Schicht weitergeleitet.\subsection{Berechnung Der Outputs}Sehen wir uns zunächst ein Einfaches Netzwerk mit einer versteckten Schicht an. Jede Schicht hat nur einen Knoten:
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.5]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20230912184748.png}
+\includegraphics[scale=0.5]{./Images/Pasted image 20230912184748.png}
 \caption{Das kleinste Netzwerk}
 \label{Was kommt hier rein?}\end{figure}Der erste Knoten wird $a_0$ genannt, und entspricht schlichtweg dem Input. Dieser wird an die erste Schicht geleitet, an alle darin vorhandenen Knoten. Dort wird es erst gewichtet, das heißt mit dem Gewicht $w_1$ , welches der Kante zugewiesen ist multipliziert. Hier wird es jetzt Spannend. Nachdem alle Inputs in unseren Knoten miteinander verrechnet sind, muss das Ergebnis erst noch durch die Aktivierungsfunktion.\subsubsection{Aktivierungsfunktion}Die am Häufigsten genutzte Aktivierungsfunktion ist die Sigmoid Funktion. Diese sieht so aus:
 $$\sigma (x)=\frac{1}{(1+e^{-x})}$$
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.70]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20230912192401.png}
+\includegraphics[scale=0.70]{./Images/Pasted image 20230912192401.png}
 \caption{Die Sigmoid Funktion}
 \label{Was kommt hier rein?}\end{figure}
 Jeder Wert, der hier hinein läuft, wird auf einen Wert zwischen 0 und 1 verkleinert. 
@@ -152,20 +150,20 @@ Um ein Starkes Signal an die Nächsten Schicht zu senden, muss die Summer aller 
 \\Es gibt eine ganze Reihe dieser Funktionen, hier einige Beispiele mit Erklärung:
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.5]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20230912194736.png}
+\includegraphics[scale=0.5]{./Images/Pasted image 20230912194736.png}
 \caption{Die Identität}
 \label{Was kommt hier rein?}\end{figure}
 Die Identität entspricht $f(x) = x$. Die Werte können dabei allerdings zu Groß werden, und daher benutzt man lieber die Sigmoid Funktion. 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.60]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20230912195705.png}
+\includegraphics[scale=0.60]{./Images/Pasted image 20230912195705.png}
 \caption{Die Sprung Funktion}
 \label{Was kommt hier rein?}\end{figure}
 Die Sprung Funktion gibt bei $x \ge 0$ eine 1 aus, bei $x<0$ immer eine 0.
 Dadurch können allerdings Sprunghafte Veränderungen im Netzwerk eintreten, die unvorteilhaft sind.
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.60]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20230912200758.png}
+\includegraphics[scale=0.60]{./Images/Pasted image 20230912200758.png}
 \caption{ReLu}
 \label{Was kommt hier rein?}\end{figure}
 ReLu ist ähnlich wie Die Identität, allerdings verläuft sie bei $\text{\{x<0\}}$ bei 0.
@@ -262,20 +260,20 @@ double Cost(MnistMatrix dataPoint) {
 \end{lstlisting}\subsection{Was bringt uns die Cost Funktion?}Wie geht es jetzt weiter? In Unserem Code wird die Cost Funktion von hier an nicht mehr aufgerufen. Aber Sie ist dennoch wichtig: denn Das Ziel unseres Netzwerkes muss es sein, diese Cost Funktion zu minimieren. Wenn wir den Graphen einer Cost Function plotten und die Gewichtungen Gewichte als unabhängige Variable "w" festlegen, um den Verlauf der Funktion $f(w)$ zu visualisieren, könnte dies beispielsweise folgendermaßen aussehen, gesetzt den Fall, dass wir nur eine einzelne Gewichtung betrachten:
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.30]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20230914193809.png}
+\includegraphics[scale=0.30]{./Images/Pasted image 20230914193809.png}
 \caption{Beispiel Cost Funktion}
 \label{Was kommt hier rein?}\end{figure}Für dieses einfache Netzwerk wäre es nun das beste, wenn wir das "w" so wählen, dass ein Globales Minimum erreicht wird. \subsection{Warum lässt sich das nicht Analytisch berechnen?}man könnte annehmen, dass die Besten Ergebnisse damit erzielt werden könnten, indem man die Tiefpunkte mit der 3. Ableitung errechnet, aber das ist leider nicht so einfach.
 Die vielen Dimensionen, und die Hoche Komplexität erlauben das nicht so einfach. Um ein Beispiel zu nennen, der Graph der Cost Funktion ist bei jedem Bild, dass wir in das Netz Fütter ein wenig anders. Daher ist es Sinnvoller sich Schrittweise eine allgemeinen Lösung zu nähern. Dieses Verfahren heißt Gradient Descent. \subsection{Gradient Descent}Man kann sich das Gradient Descent Verfahren ein wenig so vorstellen wie eine Kugel, die man einen Hügel herabrollen lässt. Entsprechend der Neigung unter ihr, rollt sie auf dem direktesten Weg in das nächste Tal. 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.70]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20230915145401.png}
+\includegraphics[scale=0.70]{./Images/Pasted image 20230915145401.png}
 \caption{Gradient Descent}
 \label{Was kommt hier rein?}
 \end{figure}
 Hierbei sollte das größte Problem des Verfahrens auch schon klar werden: Das nächste Tal ist nicht unbedingt das Tiefste.
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.40]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20230915223421.png}
+\includegraphics[scale=0.40]{./Images/Pasted image 20230915223421.png}
 \caption{Gradient Descent 3 Dimensionel}
 \label{Was kommt hier rein?}
 \end{figure}
@@ -283,14 +281,14 @@ Wir initialisieren die Gewichte, also die variable zufällig. So gesehen ist der
 Das Größte Problem ist allerdings, ein Phänomen, welches Overshooting oder Überkorrektur genannt wird. Diese Überkorrektur entsteht, wenn die Korrektur zu Groß war, und über den Tiefpunkt hinaus geschossen wird.
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.60]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20230915222826.png}
+\includegraphics[scale=0.60]{./Images/Pasted image 20230915222826.png}
 \caption{Overshooting}
 \label{Was kommt hier rein?}
 \end{figure}
 \subsection{LearnRate}[3]Um dem Problem mit dem Overshooting zu beheben, bedient man sich der sogenannten LearnRate. Dabei handelt es sich einfach um einen Faktor, mit welchem die Änderungsrate Multipliziert wird. Der Sinn dahinter ist es, die Schritt Größe anzupassen, das heißt wie Stark die Gewichte in eine Richtung angepasst werden. Wenn die Rate zu Groß ist, dann haben wir das Overshooting, bei dem sich das Netzwerk immer wieder über den Tiefpunkt hinausschießt. Wenn die rate zu niedrig ist kann es sein, dass das Netzwerk einfach zu langsam lernt. Es muss also eine Goldene Mitte gefunden werden. Normalerweise benutz man in einem Feed Forward Netzwerk eine Feste Konstante, die meist bei 0,2 oder 0,3 liegt. Im Späteren Verlauf dieser Arbeit werden dazu Tests durchgeführt, um eine Optimale LearnRate zu finden.
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.250]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20230917181526.png}
+\includegraphics[scale=0.250]{./Images/Pasted image 20230917181526.png}
 \caption{LearnRate}
 \label{Was kommt hier rein?}
 \end{figure}
@@ -301,7 +299,7 @@ Bisher haben wurde die Cost Funktion und die LearnRate behandelt. Die Cost Funlt
 Am leichtesten lässt sich dies in einer Zweidimensionalen Darstellung der Cost Funktion erklären.
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.50]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20230917195146.png}
+\includegraphics[scale=0.50]{./Images/Pasted image 20230917195146.png}
 \caption{Steigungs Graph}
 \label{Was kommt hier rein?}
 \end{figure}
@@ -335,7 +333,7 @@ Diese Formel nennt man eine Ableitung, und sie gibt die Steigung des Ursprüngli
 Nun versuchen wir die Ableitung an dem Netzwerk. Zur Erinnerung, so sah unser kleines hypothetisches Netzwerk aus:
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.40]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20230912184748.png}
+\includegraphics[scale=0.40]{./Images/Pasted image 20230912184748.png}
 \caption{Das kleinste Netzwerk}
 \label{Was kommt hier rein?}
 \end{figure}
@@ -362,7 +360,7 @@ Wir suchen:$$\frac{ dc }{ dw_{ 1 } }$$
 Dazu müssen wir zuerst alle Rechnungen im Gesamten Netzwerk angeben.
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.40]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20230912184748.png}
+\includegraphics[scale=0.40]{./Images/Pasted image 20230912184748.png}
 \caption{Das kleinste Netzwerk}
 \label{Was kommt hier rein?}
 \end{figure}
@@ -462,8 +460,7 @@ ClearAllGradients() setzt die Gradients einfach wieder auf Null, damit die Näch
 $$\frac{\Delta Z_2}{\Delta w_2}=a_1$$
 Mit anderen Worten, die NodeValues werden mit den unveränderten Inputs in die Outputschicht multipliziert.Wie werden dann alle Gewichte einer jeden versteckten Schicht berechnet? 
 Wie oben bereits beschrieben, werden für jede versteckte Schicht zwei Rechnungen zwischengeschoben, das sind jeweils die Ableitung für die Gewichtung in Bezug zu den Activations, sowie die Activations im Bezug zu den Gewichteten Inputs der vorherigen Schicht. Da die ersten Beiden Terme sich von der ersten Berechnung nicht unterscheiden, werden sie am besten wiederverwendet. Das heißt, sie sind ja bereits als NodeValues, also dem Ergebniss der CalculateOutputLayerNodeValues() Methode gespeichert. Daher übergeben wir die NodeValues der Methode CalculateOutputLayerNodeValues(), und übergeben sie der Methode CalculateHiddenLayerNodeValues(). Genau wie zuvor lassen wir uns die Ergebnisse als NodeValues übergeben, und speichern sie zwischen. Und genau wie zuvor, müssen sie noch mit der Ableitung der Gewichteten Inputs verrechnet werden, das heißt mit den ungewichteten Inputs der vorherigen Schicht.
-Dieser Schritt mit den CalculateHiddenLayerNodeValues() lässt sich in einer Schleife leicht auf alle Schichten Anwenden.Im Code sieht das dann so aus:
-\begin{lstlisting}[language=Java]
+Dieser Schritt mit den CalculateHiddenLayerNodeValues() lässt sich in einer Schleife leicht auf alle Schichten Anwenden.Im Code sieht das dann so aus:\begin{lstlisting}[language=Java]
 void UpdateAllGradients(MnistMatrix dataPoint) {
     Querry(dataPoint.getInputs());    Layer outputLayer = layers[layers.length - 1];
     double[] nodeValues = 
@@ -475,14 +472,10 @@ void UpdateAllGradients(MnistMatrix dataPoint) {
             hiddenLayer.UpdateGradients(nodeValues);
     }
 }
-\end{lstlisting}
-Und so sieht also der Backpropagation Algorithmus aus. Man fängt bei der letzten Schicht, der Output Schicht an, und passt die Gewichte an. Dann geht es weiter zur vorletzten Schicht und so weiter, bis zur Input Schicht. Die Gewichte werden sozusagen von Hinten nach vorne angepasst.
-Kommen wir nu zur Implementierung der CalculateOutputLayerNodeValues() und CalculateHiddenLayerNodeValues() Methoden.
-\subsubsection{CalculateOutputLayerNodeValues}
-Sowohl die CalculateOutputLayerNodeValues() Methode, als auch die CalculateHiddenLayerNodeValues() Methode werden in der Layer Klasse implementiert.
+\end{lstlisting}Und so sieht also der Backpropagation Algorithmus aus. Man fängt bei der letzten Schicht, der Output Schicht an, und passt die Gewichte an. Dann geht es weiter zur vorletzten Schicht und so weiter, bis zur Input Schicht. Die Gewichte werden sozusagen von Hinten nach vorne angepasst.
+Kommen wir nu zur Implementierung der CalculateOutputLayerNodeValues() und CalculateHiddenLayerNodeValues() Methoden.\subsubsection{CalculateOutputLayerNodeValues}Sowohl die CalculateOutputLayerNodeValues() Methode, als auch die CalculateHiddenLayerNodeValues() Methode werden in der Layer Klasse implementiert.
 Die ersten NodeValues, die für die Output Schicht berechnet werden, entsprechen der Multiplikation aus der Ableitung der Cost Funktion und der Ableitung der Schwellwert Funktion der Output Schicht.
-Die NodeValues werden danach zurückgegeben.
-\begin{lstlisting}[language=Java]
+Die NodeValues werden danach zurückgegeben.\begin{lstlisting}[language=Java]
 public double[] CalculateOutputLayerNodeValues(double[] expectedOutputs) {
     double[] nodeValues = new double[expectedOutputs.length];
     for (int i = 0; i < nodeValues.length; i++) {
@@ -493,9 +486,7 @@ public double[] CalculateOutputLayerNodeValues(double[] expectedOutputs) {
     }
     return nodeValues;
 }
-\end{lstlisting}
-In der Aufrufenden Methode, UpdateAllGradients(), werden die NodeValues zwischengespeichert, und danach direkt an die Methode UpdateGradients() der Output Schicht weitergegeben. Dort werden sie mit den Ungewichteten Inputs verrechnet, wodurch die erste Matrix entsteht, welche die Änderungen an den Gewichten enthält, die noch nicht mit den Gewichten verrechnet wurden.
-\begin{lstlisting}[language=Java]
+\end{lstlisting}In der Aufrufenden Methode, UpdateAllGradients(), werden die NodeValues zwischengespeichert, und danach direkt an die Methode UpdateGradients() der Output Schicht weitergegeben. Dort werden sie mit den Ungewichteten Inputs verrechnet, wodurch die erste Matrix entsteht, welche die Änderungen an den Gewichten enthält, die noch nicht mit den Gewichten verrechnet wurden.\begin{lstlisting}[language=Java]
 public void UpdateGradients(double[] nodeValues) {
     for (int nodeOut = 0; nodeOut < numOutputNodes; nodeOut++) {
         for (int nodeIn = 0; nodeIn < numInputNodes; nodeIn++) {
@@ -504,8 +495,7 @@ public void UpdateGradients(double[] nodeValues) {
         }
     }
 }
-\end{lstlisting}
-Das Array CostSteigungW muss außerdem ebenfalls in der Klasse Layer festgehalten werden. Hier werden die Anpassungen, die wir mithilfe der Kettenregel ausrechnen abgespeichert, bevor sie mit den Gewichten verrechnet werden.\begin{lstlisting}[language=Java]
+\end{lstlisting}Das Array CostSteigungW muss außerdem ebenfalls in der Klasse Layer festgehalten werden. Hier werden die Anpassungen, die wir mithilfe der Kettenregel ausrechnen abgespeichert, bevor sie mit den Gewichten verrechnet werden.\begin{lstlisting}[language=Java]
 public class Layer {    int numInputNodes, numOutputNodes;
     double[][] weights;
     //--> Steigung der Cost Funktion im Bezug auf das Gewicht W
@@ -541,7 +531,7 @@ public void ApplyGradient(double learnrate) {
 }
 \end{lstlisting}Wichtig zu beachten ist hier, dass die Steigung der Cost Funktion, die wir ausgerechnet haben, also die Anpassung an den Gewichten von den Gewichten *abgezogen* wird. Wenn die Steigung nämlich Positiv ist, dann läge der Tiefpunkt in entgegengesetzter Richtung, wenn sie negativ ist, liegt der Tiefpunkt voraus.\begin{figure}[H]
 \centering
-\includegraphics[scale=0.55]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20230917195146.png}
+\includegraphics[scale=0.55]{./Images/Pasted image 20230917195146.png}
 \caption{Steigungsgraph}
 \label{Was kommt hier rein?}
 \end{figure}
@@ -569,28 +559,28 @@ Das Projekt wurde für diese Projektarbeit angepasst und erweitert. Hinzugekomme
 Die Klasse MNISTPrinter gibt ein String zurück, welches eine ASCII Darstellung der Bilder ermöglicht. Je nach Helligkeit eines Pixels wird ein größeres oder kleineres Zeichen ausgegeben. Hier ein Beispiel:
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.60]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20231001133125.png}
+\includegraphics[scale=0.60]{./Images/Pasted image 20231001133125.png}
 \caption{Beispiel für "3"}
 \label{Was kommt hier rein?}
 \end{figure}
 Oben Links in der Ecke steht außerdem bereits, welches Lable das Bild trägt. Teilweise sind die Zahlen auch für Menschen schlecht erkennbar, wie zum Beispiel diese 5:
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.60]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20231001133317.png}
+\includegraphics[scale=0.60]{./Images/Pasted image 20231001133317.png}
 \caption{Beispiel für "5"}
 \label{Was kommt hier rein?}
 \end{figure}
 Die Letzte Klasse ist die MNISTHTML Klasse. Diese wird dazu verwendet, um eine Ausgabe im HTML Format auszugeben. Dabei werden mehrere Beispiele aus dem Trainingsdatensatz und aus dem Testdatensatz dargestellt, zusammen mit den Outputs des Netzwerkes.
 Über der 3, die oben als Beispiel gezeigt wurde, wird dies Angezeigt:\begin{figure}[H]
 \centering
-\includegraphics[scale=0.60]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20231001133707.png}
+\includegraphics[scale=0.60]{./Images/Pasted image 20231001133707.png}
 \caption{Klassifikation für "3"}
 \label{Was kommt hier rein?}
 \end{figure}
 Das Netzwerk hat das Bild Korrekt als eine 3 Klassifizier, dies wird Grün dargestellt. Die Wahrscheinlichkeiten für jede mögliche Ausgabe werden in der Tabelle darunter dargestellt. Wir können eine Wahrscheinlichkeit von 5.52\% für das Ergebnis "0" erkennen. Die Korrekte Ausgabe "3" wurde mit einer Wahrscheinlichkeit von 89,16\% angegeben. Ein sehr gutes Ergebnis. An dieser Stelle soll darauf hingewiesen werden, dass die Prozentzahlen alles möglichen Ausgaben zusammengerechnet nicht 100\% ergeben. Die Wahrscheinlichkeiten sind unabhängig voneinander. Sie zeigen lediglich an, wie wahrscheinlich eine Ausgabe ist, oder unwahrscheinlich, sprich, 5,52\% Wahrscheinlichkeit das dieses Bild eine 0 darstellt, und eine 94,48\% Wahrscheinlichkeit, dass es keine 0 ist.
 So sehen die Ergebnisse für die 5 aus:\begin{figure}[H]
 \centering
-\includegraphics[scale=0.60]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20231001134329.png}
+\includegraphics[scale=0.60]{./Images/Pasted image 20231001134329.png}
 \caption{Klassifikation für "5"}
 \label{Was kommt hier rein?}
 \end{figure}
@@ -607,7 +597,7 @@ In unserem Netzwerk werden sie TrainingCycles genannt, in der Fachliteratur alle
 Die LearnRate sollte mittlerweile bekannt sein. Dabei handelt es sich um eine Zahl, mit der die Anpassungsrate verrechnet wird, um ein Over Shooting zu vermeiden. Wenn das Netzwerk zu Große Schritte in Richtung eines Fehlerminimums geht, kann es dazu kommen, dass es über den Tiefpunkt hinaushüpft, im schlimmsten falle sogar komplett aus dem Tal des Tiefpunkts hinausspringt. Bei einer zu geringen LearnRate kann es sein, dass das Netzwerk zu langsam lernt. In dem Fall müssen die Daten in mehreren Epochen Trainiert werden, was im schlimmsten Fall zu Overfitting führen kann. Jedoch kann es hilfreich sein, dass die Einzelnen Anpassungen keinen zu großen Einfluss haben. Ein gutes Netzwerk muss bei der Anpassung der Gewichte einen Kompromiss finden zwischen den 10 Zahlen. Wenn jedes mal immer nur ein Bild betrachtet wird, und die LearnRate zu Groß ist, neigt das Netzwerk schnell zu einzelnen Zahlen.
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.250]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20230917181526.png}
+\includegraphics[scale=0.250]{./Images/Pasted image 20230917181526.png}
 \caption{LearnRate}
 \label{Was kommt hier rein?}
 \end{figure}
@@ -729,22 +719,22 @@ Im Vergleich zu den vorherigen Testreihen, wird die Genauigkeit von über 90\% b
 Um etwas genauer zu werden, sehen wir uns einmal an, wie die Graphen aussehen im Bezug auf die Inputs $x$, nachdem sie mit den Gewichten $w$ verrechnet werden. Für $w$ nehmen wir als Beispiels Werte 0.5, 1, und 3.
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.60]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20231005144238.png}
+\includegraphics[scale=0.60]{./Images/Pasted image 20231005144238.png}
 \caption{Klassifikationen ohne Bias}
 \label{Was kommt hier rein?}
 \end{figure}
 Alle Graphen verlaufen durch den 0 Punkt. Dies sorgt allerdings auch dafür, dass das Netzwerk recht unflexibel ist. Nehmen wir an, dass es zwei Klassen gibt, die das Netzwerk unterscheiden können soll, und Klasse 1 befindet sich in $x$ < 1 sowie $y$ < 1, dann wäre es schlicht unmöglich, mit einem dieser Graphen eine einfache Klassifizierung vorzunehmen. Wenn wir allerdings einen Bias $b$ addieren, dann lässt sich so ein Graph entlang der $y$ Achse verschieben.\begin{figure}[H]
 \centering
-\includegraphics[scale=0.60]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20231005144628.png}
+\includegraphics[scale=0.60]{./Images/Pasted image 20231005144628.png}
 \caption{Die Identität}
 \label{Was kommt hier rein?}\end{figure}Mit diesem Graphen wäre unser Beispiel dann gelöst, alle Elemente der Klasse 1 liegen unterhalb des Graphen, während alle Elemente der Klasse 2 größer als 1 in beiden Achsen sind, und damit über dem Graphen liegen.
 Um die Berechnung im Neuron einmal darzustellen, hier eine Graphik:\begin{figure}[H]
 \centering
-\includegraphics[scale=0.60]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20231005133406.png}
+\includegraphics[scale=0.60]{./Images/Pasted image 20231005133406.png}
 \caption{Die Identität}
 \label{Was kommt hier rein?}\end{figure}Nachdem die Gewichte mit den Inputs multipliziert wurden, werden die Biases dazu addiert. Dieser Wert wird dann an die Schwellenfunktion übergeben. Hier ein beispiel mit der Sigmoid Funktion:\begin{figure}[H]
 \centering
-\includegraphics[scale=0.60]{/home/zoltan/Projekte/NNLayers/Obsidian/Notes/Images/Pasted image 20231005145933.png}
+\includegraphics[scale=0.60]{./Images/Pasted image 20231005145933.png}
 \caption{Die Identität}
 \label{Was kommt hier rein?}\end{figure}Der Bias von 2 und -2 verschiebt die Sigmoid Funktion nach Rechts und nach Links. Dadurch hat das Netzwerk eine Größere Kontrolle darüber, wie Stark ein Input sein muss, um ein Neuron/Knoten zu Aktivieren.\subsection{Mathematische Umsetzung}Sehen wir uns als nächstes also an, was wir im Netzwerk ändern müssen. Bisher sah die Rechnung so aus:$$Z_2 = a_1 * w_2$$jetzt Addieren wir allerdings noch den Bias: $$Z_2 = a_1 * w_2 + b$$
 Zuvor haben wir $Z_2$ im Bezug auf $w_2$ betrachtet, um die Ableitung zu bilden. Nun müssen wir dies Eigentlich noch einmal machen, um festzustellen, ob wir an unseren bisherigen Formeln etwas ändern müssten.
@@ -983,7 +973,7 @@ Anhand der Daten wird klar, dass im vergleich zu den früheren Tests deutlich gr
 
 In der nächsten testreihe werden jeweils zwei tests für die LearnRates 0.1 und 0.2 mit Batch Größen von 50, sowie eine Testreihe immer zu Anfang mit einer Batch Größen von 1, mit der vorher gefundenen LearnRate von 0.003, um besser vergleichen zu können. 
 
-\begin{table}[H]
+\begin{table}[!ht]
     \centering
     \begin{tabular}{|l|l|l|l|l|l|l|}
     \hline
@@ -1034,6 +1024,7 @@ Es ist ersichtlich, dass die Batchsizes einen Positiven Einfluss haben. Allerdin
     \end{tabular}
 \end{table}
 
+
 \section{Overfitting}
 Dieses letzte Kapitel widmet sich einem der häufigsten Probleme der Neuronalen Netzwerke, dem Overfitting.\\
 Das Overfitting entsteht, wenn ein Datensatz zu häufig gelernt wird. Das Netzwerk fängt irgendwann an, die Bilder auswendig zu lernen, anstatt Generelle Muster zu erkennen und daraus schlüsse zu ziehen. 
@@ -1074,7 +1065,6 @@ Eine möglichkeit, die Leistung zu verbessern, ist es, einen Automatischen Lern 
 Weitere verbesserungen bringen die sogenannten Optimierer. Eine Möglichkeit bietet das "Momentum". Dabei wird die Änderungsrate der vorherigen Iteration als Anhaltsüunkt genommen, wie stark sich das Netzwerk noch verändert. Das heißt je größer die letzte Änderungsrate war, desto größer ist das Momentum, welches mit der Aktuellen Änderungsrate verrechnet wird. Dadurch beschleunigt sich die Anpassung der Gewichte wenn es noch weit vom Tiefpunkt entfernt ist, und verlangsamt sich, wenn es sich annähert. Es gibt noch weiter Regularisierungsmethoden, die man implementieren könnte.\\
 Um Außerdem noch bessere Ergebnisse auf dem MNIST Datensatzt speziel zu erlangen, kann man das soganannte "Noise" in den Datensatz einführen. Der MNIST Datensatz ist ein Neuronales Netzwerk vereineitlicht worden. Dadurch kann es dazu kommen, dass sich das netzwerk auf bestimmte gegebenheiten verlässt, wie zB die Größe der Zahl, der Ausrichtung, die Zentrierung im Bild, sowie die Abwesenheit von falschen Pixeln.\\
 Wenn man unser Netztwerk nun in einem Programm einsetzten möchte, welches dem Anwender die möglichkeit gibt, in einem Fenster eine Zahl zu schreiben, welche dann vom netztwerk Klassifiziert wird, so würde das Netzwerk vieleich nur 20 bis 30\% erkennen. Das liegt daran, dass es sich nicht mehr auf eine bestimmte Größe und Ausrichtung verlassen kann. Um das Netztwerk auf diese unregelmäßigkeiten vorzubereiten, könnte man einen Zufallsgenerator vor jedes Bild schalten, welcher die einzelnen Datensätze leicht verändert. Das heißt bevor jedes Bild vom Netzwerk gelernt wird, wird zuerst die Rotation und Größe des Bildes angepasst, sowie ein paar falsche Pixel eingefügt. Dieses Rauschen im Datensatzt würde dafür sorgen, dass das Netzwerk länger brauccht, um zu lernen, also müsste man auch mehr Epochen einstellen. Das Netzwerk kann sich dann nicht mehr auf diese Faktoren verlassen, und muss die Problemstellung besser abstrahieren. Damit wäre es dann auch möglich, die Zahlen in einem EIngabefenster dynamisch zu klassifizieren.\\
-
 
 
 \cleardoublepage
