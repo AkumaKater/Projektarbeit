@@ -4,7 +4,7 @@ Das hier ist meine Projektarbeit. Das Thema ist "Wie Programmiert man ein einfac
 
 ## Die Projektarbeit
 
-Die Projektarbeit befindet sich im PDF Format in diesem Ordner, unter dem namen "ProjektArbeit.pdf".
+Die Projektarbeit befindet sich im PDF Format in diesem Ordner, unter dem namen "Projektarbeit.pdf".
 
 ## Der Code
 
