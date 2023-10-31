@@ -1,7 +1,7 @@
-LayerSizes=784,80,10
-SplitIndex=60000
-TrainingCycles=30
-LearnRate=0.01
-BatchSize=1
-PerformanceNotes=FFN-Ausgabe/BatchTest/PN(BatchTest-LR)V7.html
+LayerSizes=784,200,200,200,10
+SplitIndex=300
+TrainingCycles=300
+LearnRate=0.2
+BatchSize=50
+PerformanceNotes=FFN-Ausgabe/Overfitting/PN(Overfitting)V2.html
 Visualization=FFN-Ausgabe/Visualization.html
