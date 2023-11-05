@@ -627,8 +627,8 @@ Bei einer großen LearnRate, wird bei der Anpassung der Gewichte, der Tiefpunkt 
 \caption{LearnRate}
 \label{LearnRate}
 \end{figure}
-\section{Ergebnisse der Ersten Testreihen}
-Kommen wir nun zu den Testreihen. Sehen wir uns zunächst einmal an, wie verlässlich das Netzwerk arbeitet. Dazu initialisieren wir das Netzwerk mit einer Reihe Test Einstellungen. Das Netzwerk soll eine versteckte Schicht haben, mit 100 Knoten. Wir trainieren auf der vollen Größe des Datensatzes, das heißt 60.000 Bilder. Eine Epoche sollte für die ersten Testreihen ausreichend sein. Zur BatchSize kommen wir später, im Moment liegt sie bei eins. Das heißt, dass immer nur ein Bild betrachtet und gelernt wird. Die LearnRate stellen wir einfach mal auf 0.25 ein, diese Rate hat sich für einfache Feed Forward Netzwerke bewährt. Diese Einstellungen werden ausgegeben, und in den Letzten beiden Spalten werden jeweils die Genauigkeit des Netzwerkes auf den Trainings Daten und auf den Test Daten eingetragen. Um die Genauigkeit zu berechnen, wird einfach der Gesamte Datensatz einmal durch die Query des Netzwerkes berechnet, und der Anteil an korrekt Klassifizierten Bildern ist die Genauigkeit des Netzwerkes.
+\section{Ergebnisse der ersten Testreihen}
+Kommen wir nun zu den Testreihen. Sehen wir uns zunächst einmal an, wie verlässlich das Netzwerk arbeitet. Dazu initialisieren wir das Netzwerk mit einer Reihe Test-Einstellungen. Das Netzwerk soll eine versteckte Schicht, mit 100 Knoten, haben. Wir trainieren auf der vollen Größe des Datensatzes, das heißt mit 60.000 Bilder. Eine Epoche sollte für die ersten Testreihen ausreichend sein. Zur BatchSize kommen wir später, im Moment liegt sie bei eins, was bedeutet, dass immer nur ein Bild betrachtet und gelernt wird. Die LearnRate stellen wir einfach mal auf 0.25 ein, diese Rate hat sich für einfache FeedForward-Netzwerke bewährt. Diese Einstellungen werden ausgegeben und in den Letzten beiden Spalten werden jeweils die Genauigkeit des Netzwerkes auf den Trainingsdaten und auf den Testdaten eingetragen. Um die Genauigkeit zu berechnen, wird einfach der gesamte Datensatz einmal durch die Query des Netzwerkes berechnet und der Anteil an korrekt klassifizierten Bildern ist die Genauigkeit des Netzwerkes.
 Hier sind die ersten 6 Durchläufe:
 \begin{table}[H]
     \centering
@@ -665,19 +665,19 @@ Zunächst fällt auf, dass die Ergebnisse stark schwanken. Das lässt darauf sch
     \centering
     \begin{tabular}{|l|l|l|l|l|l|l|l|}
     \hline
-        HLayersSizes & DataSize & Epochen & BatchSize & Learnrate & ACtrainingD & ACtestD & ~ \\ \hline
-        [780, 100, 10] & 60000 & 1 & 1 & 0.009 & 77,33\% & 77,70\% & ~ \\ \hline
-        [780, 100, 10] & 60000 & 1 & 1 & 0.008 & 73,47\% & 74,08\% & ~ \\ \hline
-        [780, 100, 10] & 60000 & 1 & 1 & 0.007 & 74,50\% & 75,37\% & ~ \\ \hline
-        [780, 100, 10] & 60000 & 1 & 1 & 0.006 & 77,84\% & 78,80\% & ~ \\ \hline
-        [780, 100, 10] & 60000 & 1 & 1 & 0.005 & 80,05\% & 81,09\% & ~ \\ \hline
-        [780, 100, 10] & 60000 & 1 & 1 & 0.004 & 78,94\% & 79,47\% & ~ \\ \hline
-        [780, 100, 10] & 60000 & 1 & 1 & 0.003 & 79,45\% & 79,77\% & ~ \\ \hline
-        [780, 100, 10] & 60000 & 1 & 1 & 0.002 & 79,27\% & 79,61\% & ~ \\ \hline
-        [780, 100, 10] & 60000 & 1 & 1 & 0.001 & 74,58\% & 75,27\% & ~ \\ \hline
+        HLayersSizes & DataSize & Epochen & BatchSize & Learnrate & ACtrainingD & ACtestD\\ \hline
+        [780, 100, 10] & 60000 & 1 & 1 & 0.009 & 77,33\% & 77,70\%  \\ \hline
+        [780, 100, 10] & 60000 & 1 & 1 & 0.008 & 73,47\% & 74,08\% \\ \hline
+        [780, 100, 10] & 60000 & 1 & 1 & 0.007 & 74,50\% & 75,37\% \\ \hline
+        [780, 100, 10] & 60000 & 1 & 1 & 0.006 & 77,84\% & 78,80\% \\ \hline
+        [780, 100, 10] & 60000 & 1 & 1 & 0.005 & 80,05\% & 81,09\%  \\ \hline
+        [780, 100, 10] & 60000 & 1 & 1 & 0.004 & 78,94\% & 79,47\%  \\ \hline
+        [780, 100, 10] & 60000 & 1 & 1 & 0.003 & 79,45\% & 79,77\%  \\ \hline
+        [780, 100, 10] & 60000 & 1 & 1 & 0.002 & 79,27\% & 79,61\%  \\ \hline
+        [780, 100, 10] & 60000 & 1 & 1 & 0.001 & 74,58\% & 75,27\%  \\ \hline
     \end{tabular}
 \end{table}
-	Diese Ergebnisse sehen schon viel besser aus. Es ist ersichtlich, dass sich bei einer LearnRate von 0.004 und kleiner keine Steigerung der Genauigkeit mehr feststellen lässt. Daher versuchen wir im nächsten Schritt die Epochen zu erhöhen. Durch das wiederholte lernen des Datensatzes sollten bessere Ergebnisse erzielt werden. Die LearnRate setzten wir hierbei auf 0.003, da wir in der letzten Testreihe Feststellen konnten, dass sich der die Optimale LearnRate zwischen 0.006 und 0.002 befinden muss, entscheiden wir uns für 0.003. Bei mehr Epochen können wir ruhig eine kleinere LearnRate wählen, da das Netzwerk genug Zeit haben müsste, um ein Tiefpunkt zu finden.
+	Diese Ergebnisse sehen schon viel besser aus. Es ist ersichtlich, dass sich bei einer LearnRate von 0,004 und kleiner keine Steigerung der Genauigkeit mehr feststellen lässt. Daher versuchen wir im nächsten Schritt die Epochen zu erhöhen. Durch das wiederholte Lernen des Datensatzes sollten bessere Ergebnisse erzielt werden. Die LearnRate setzten wir hierbei auf 0,003, da wir in der letzten Testreihe Feststellen konnten, dass sich der die optimale LearnRate zwischen 0,006 und 0,002 befinden muss, entscheiden wir uns für 0,003. Bei mehr Epochen können wir ruhig eine kleinere LearnRate wählen, da das Netzwerk genug Zeit haben müsste, um ein Tiefpunkt zu finden.
 \begin{table}[H]
     \centering
     \begin{tabular}{|l|l|l|l|l|l|l|}
@@ -693,7 +693,7 @@ Zunächst fällt auf, dass die Ergebnisse stark schwanken. Das lässt darauf sch
         [784, 100, 10] & 60000 & 40 & 1 & 0.003 & 91,20\% & 91,32\% \\ \hline
     \end{tabular}
 \end{table}
-Bei dem ersten Versuch wurde der Gesamte Datensatz fünf mal gelernt. Im Vergleich zu den vorherigen Tests lässt sich bereits eine Steigerung der Genauigkeit um fast 8\% erkennen. Bei noch mehr Epochen lässt sich weiterhin erkennen, dass sich die Ergebnisse verbessern, allerdings konvergieren die Ergebnisse langsam gegen 92\%. Außerdem dauert es sehr lange, die vielen Epochen zu trainieren. Bisher haben wir alle Netzwerke mit einer versteckten Schicht trainiert, die genau hundert Knoten beherbergt. Die nächsten Versuchsreihen haben verschiedene Konfigurationen für die versteckten Schichten. Wir sehen uns einige Variationen im Bezug auf Anzahl der Schichten sowie Anzahl der Knoten an, allesamt mit einer LearnRate von 0.003 und einer Epochen Zahl von 25, da wir mit dieser Konfiguration bereits einige Erfolge erzielt haben. 
+Bei dem ersten Versuch wurde der gesamte Datensatz fünf mal gelernt. Im Vergleich zu den vorherigen Tests lässt sich bereits eine Steigerung der Genauigkeit um fast 8\% erkennen. Bei noch mehr Epochen lässt sich weiterhin erkennen, dass sich die Ergebnisse verbessern, allerdings konvergieren die Ergebnisse langsam gegen 92\%. Außerdem dauert es sehr lange, die vielen Epochen zu trainieren. Bisher haben wir alle Netzwerke mit einer versteckten Schicht trainiert, die genau hundert Knoten beherbergt. Die nächsten Versuchsreihen haben verschiedene Konfigurationen für die versteckten Schichten. Wir sehen uns einige Variationen im Bezug auf Anzahl der Schichten sowie Anzahl der Knoten an, allesamt mit einer LearnRate von 0,003 und einer Epochen Zahl von 25, da wir mit dieser Konfiguration bereits einige Erfolge erzielt haben. 
 \begin{table}[H]
     \centering
     \begin{tabular}{|l|l|l|l|l|l|l|}
@@ -740,23 +740,23 @@ Wir können anhand der Ergebnisse feststellen, dass mehr Schichten und mehr Knot
         [784, 300, 100, 10] & 60000 & 30 & 1 & 0.003 & 93,99\% & 93,88\% \\ \hline
     \end{tabular}
 \end{table}
-Im Vergleich zu den vorherigen Testreihen, wird die Genauigkeit von über 90\% bereits nach fünf Epochen anstatt den zwanzig Epochen erreicht, die nötig waren, um das kleinere Netzwerk mit einer Versteckten Schicht und hundert Knoten zu trainieren.Um die Ergebnisse ein wenig besser Einordnen zu können, betrachten wir einmal, wie ein Nicht funktionierendes Netzwerk aussehen würde. Wir nehmen an, dass das Netzwerk jedes Bild als eine Null Klassifiziert. Dann wäre das Netzwerk in 10\% der Fällen immer noch richtig. Das heißt wenn es tatsächlich dazu kommt, dass das Ergebnis des Netzwerkes immer Null ist, dann läge die Genauigkeit bei 10\%, und nicht bei 0\%, wie man fälschlicherweise annehmen könnte. In dem Fall, dass das Netzwerk tatsächlich eine geringere Genauigkeit als ungefähr 10\% erzielt, dann muss davon ausgegangen werden, dass das Netzwerk gezielt Fehler macht. Unter Umständen maximiert das Netzwerk den Fehler dann. Dadurch würde auf jeden Fall die Vermutung nahe liegen, dass das Netzwerk bereits korrekt klassifizieren kann, allerdings gezielt das falsche Ergebnis ausgibt. In den meisten Fällen würde ein nicht funktionierendes Netzwerk allerdings rund um die 10\% Genauigkeit erreichen, das heißt zwischen 8\% und 12\%. Wenn das Netzwerk nicht verstanden hat, was es tun soll, und einfach nur willkürlich rät, wird es ebenfalls ungefähr bei 10\% Genauigkeit landen, mit leichten Abweichungen. Wenn wir es also mit einem Netzwerk zu tun haben, das 20\% Genauigkeit erreicht, dann können wir davon ausgehen, dass es bereits ein gewisses Verständnis darüber erlangt hat, wie die Bilder zu klassifizieren sind. Wenden wir uns nun Möglichkeiten zu, das Netzwerk zu verbessern. Dazu sehen wir uns zuerst die Biases, und danach die Batches an.\section{Biases}
-\subsection{Erklärung zum Nutzen} Die Erklärung und die Bilder in diesem Abschnitt basieren auf einem Thread aus stackoverflow[5], sowie eigenen Erfahrungen. Biases geben uns die Möglichkeit, die Schwellwert Funktion zu verschieben. Kurzgefasst, das Netzwerk wird flexibler. 
-Um etwas genauer zu werden, sehen wir uns einmal an, wie die Graphen aussehen im Bezug auf die Inputs $x$, nachdem sie mit den Gewichten $w$ verrechnet werden. Für $w$ nehmen wir als Beispiels Werte 0.5, 1, und 3.
+Im Vergleich zu den vorherigen Testreihen, wird die Genauigkeit von über 90\% bereits nach fünf Epochen, anstatt den zwanzig Epochen erreicht, die nötig waren, um das kleinere Netzwerk mit einer versteckten Schicht und Hundert Knoten zu trainieren. Um die Ergebnisse ein wenig besser einordnen zu können, betrachten wir einmal, wie ein nicht-funktionierendes Netzwerk aussehen würde. Wir nehmen an, dass das Netzwerk jedes Bild als eine Null Klassifiziert. Dann wäre das Netzwerk in 10\% der Fällen immer noch richtig. Das heißt wenn es tatsächlich dazu kommt, dass das Ergebnis des Netzwerkes immer Null ist, dann läge die Genauigkeit bei 10\%, nicht bei 0\%, wie man fälschlicherweise annehmen könnte. In dem Fall, dass das Netzwerk tatsächlich eine geringere Genauigkeit als ungefähr 10\% erzielt, muss davon ausgegangen werden, dass das Netzwerk gezielt Fehler macht. Unter Umständen maximiert das Netzwerk den Fehler dann. Dadurch würde auf jeden Fall die Vermutung nahe liegen, dass das Netzwerk bereits korrekt klassifizieren kann, allerdings gezielt das falsche Ergebnis ausgibt. In den meisten Fällen würde ein nicht funktionierendes Netzwerk allerdings rund um die 10\% Genauigkeit erreichen, das heißt zwischen 8\% und 12\%. Wenn das Netzwerk nicht verstanden hat, was es tun soll und einfach nur willkürlich rät, wird es ebenfalls ungefähr bei 10\% Genauigkeit landen, mit leichten Abweichungen. Wenn wir es also mit einem Netzwerk zu tun haben, das 20\% Genauigkeit erreicht, dann können wir davon ausgehen, dass es bereits ein gewisses Verständnis darüber erlangt hat, wie die Bilder zu klassifizieren sind. Wenden wir uns nun Möglichkeiten zu, das Netzwerk zu verbessern. Dazu sehen wir uns zuerst die Biases und danach die Batches an.\section{Biases}
+\subsection{Erklärung zum Nutzen} Die Erklärung und die Bilder in diesem Abschnitt basieren auf einem Thread aus stackoverflow[5], sowie eigenen Erfahrungen. Biases geben uns die Möglichkeit, die Schwellwert-Funktion zu verschieben. Kurzgefasst, das Netzwerk wird flexibler. 
+Um etwas genauer zu werden, sehen wir uns einmal an, wie die Graphen aussehen, im Bezug auf die Inputs $x$, nachdem sie mit den Gewichten $w$, verrechnet werden. Für $w$ nehmen wir, als Beispiel, Werte 0,5; 1 und 3.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.60]{./Images/Pasted image 20231005144238.png}
 \caption{Klassifikationen ohne Bias}
 \label{Klassifikationen ohne Bias}
 \end{figure}
-Alle Graphen verlaufen durch den Nullpunkt. Dies sorgt allerdings auch dafür, dass das Netzwerk recht unflexibel ist. Nehmen wir an, dass es zwei Klassen gibt, die das Netzwerk unterscheiden können soll, und Klasse 1 befindet sich in $x$ < 1 sowie $y$ < 1, dann wäre es schlicht unmöglich, mit einem dieser Graphen eine einfache Klassifizierung vorzunehmen. Wenn wir allerdings einen Bias $b$ addieren, dann lässt sich so ein Graph entlang der $y$ Achse verschieben.
+Alle Graphen verlaufen durch den Nullpunkt. Dies sorgt allerdings auch dafür, dass das Netzwerk recht unflexibel ist. Nehmen wir an, dass es zwei Klassen gibt, die das Netzwerk unterscheiden können soll, und Klasse 1 befindet sich in $x$ < 1 sowie $y$ < 1, dann wäre es schlicht unmöglich, mit einem dieser Graphen eine einfache Klassifizierung vorzunehmen. Wenn wir allerdings einen Bias $b$ addieren, dann lässt sich ein solcher Graph entlang der $y$ Achse verschieben.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.60]{./Images/Pasted image 20231005144628.png}
 \caption{Graph mit Bias}
 \label{Graph mit Bias}
 \end{figure}
-Mit diesem Graphen wäre unser Beispiel dann gelöst, alle Elemente der Klasse 1 liegen unterhalb des Graphen, während alle Elemente der Klasse 2 größer als 1 in beiden Achsen sind, und damit über dem Graphen liegen.
+Mit diesem Graphen, wäre unser Beispiel dann gelöst. Alle Elemente der Klasse 1 liegen unterhalb des Graphen, während alle Elemente der Klasse 2 größer als 1 in beiden Achsen sind, und damit über dem Graphen liegen.
 Um die Berechnung im Neuron einmal darzustellen, hier eine Grafik:
 \begin{figure}[H]
 \centering
@@ -764,26 +764,26 @@ Um die Berechnung im Neuron einmal darzustellen, hier eine Grafik:
 \caption{Aufbau des Netzwerkes mit Bias}
 \label{Aufbau des Netzwerkes mit Bias}
 \end{figure}
-Nachdem die Gewichte mit den Inputs multipliziert wurden, werden die Biases dazu addiert. Dieser Wert wird dann an die Schwellenfunktion übergeben. Hier ein Beispiel mit der Sigmoid Funktion:
+Nachdem die Gewichte mit den Inputs multipliziert wurden, werden die Biases addiert. Dieser Wert wird dann an die Schwellenfunktion übergeben. Hier ein Beispiel, mit der Sigmoid-Funktion:
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.60]{./Images/Pasted image 20231005145933.png}
 \caption{Sigmoidfunktion mit Bias}
-\label{Sigmoidfunktion mit Bias}
+\label{Sigmoid-Funktion mit Bias}
 \end{figure}
-Der Bias von 2 und -2 verschiebt die Sigmoid Funktion nach rechts und nach links. Dadurch hat das Netzwerk eine größere Kontrolle darüber, wie stark ein Input sein muss, um ein Neuron bzw. Knoten zu aktivieren.\subsection{Mathematische Umsetzung}Sehen wir uns als nächstes also an, was wir im Netzwerk ändern müssen. Bisher sah die Rechnung so aus:$$Z_2 = a_1 * w_2$$jetzt Addieren wir allerdings noch den Bias: $$Z_2 = a_1 * w_2 + b$$
-Zuvor haben wir $Z_2$ im Bezug auf $w_2$ betrachtet, um die Ableitung zu bilden. Nun müssen wir dies eigentlich noch einmal machen, um festzustellen, ob wir an unseren bisherigen Formeln etwas ändern müssten.
+Der Bias von 2 und -2 verschiebt die Sigmoid-Funktion nach rechts und nach links. Dadurch hat das Netzwerk eine größere Kontrolle darüber, wie stark ein Input sein muss, um ein Neuron bzw. Knoten zu aktivieren.\subsection{Mathematische Umsetzung}Sehen wir uns als nächstes also an, was wir im Netzwerk ändern müssen. Bisher sah die Rechnung so aus:$$Z_2 = a_1 * w_2$$Jetzt Addieren wir allerdings noch den Bias: $$Z_2 = a_1 * w_2 + b$$
+Zuvor haben wir $Z_2$ im Bezug auf $w_2$ betrachtet, um die Ableitung zu bilden. Nun müssen wir dies eigentlich noch einmal machen, um festzustellen, ob wir an unseren bisherigen Formeln etwas ändern müssten:
 $$\frac{\Delta Z_2 }{\Delta w_2 } = \frac{ a_1 * (w_2+h) + b -(a_1 * w_2 + b) }{ h }$$
 $$\frac{\Delta Z_2 }{\Delta w_2 } = \frac{ a_1*w_2+a_1*h + b -a_1 * w_2 - b }{ h }$$
 $$\frac{\Delta Z_2 }{\Delta w_2 } = \frac{ a_1*w_2+a_1*h-a_1 * w_2 }{ h }$$
 $$\frac{\Delta Z_2 }{\Delta w_2 } = \frac{a_1*h }{ h }$$
 $$\frac{\Delta Z_2 }{\Delta w_2 } = a_1$$
-Die Konstante $c$ fällt weg, und hat keinen Einfluss. Daher müssen wir am bestehenden Code nichts weiter hinzufügen. Aber wie genau berechnen wir die Änderungsrate für die Biases? Die Änderungsrate der Biases kann ebenfalls mit der Ableitung berechnet werden, also schreiben wir:
+Die Konstante $c$ fällt weg und hat keinen Einfluss. Daher müssen wir am bestehenden Code nichts weiter hinzufügen. Aber wie genau berechnen wir die Änderungsrate für die Biases? Die Änderungsrate der Biases kann ebenfalls mit der Ableitung berechnet werden, also schreiben wir:
 $$\frac{ dc }{ db_{ 2 } }=
 \frac{ dc }{ da_{ 2 } }*
 \frac{ da_{ 2 } }{ dZ_{ 2 } }*
 \frac{ dZ_{ 2 } }{ db_{ 2 } }$$
-Die ersten beiden Terme sind uns bereits bekannt, und im Code haben wir sie NodeValues genannt. Nur der letzte Term hat sich verändert, also müssen wir die Ableitung bilden.
+Die ersten beiden Terme sind uns bereits bekannt und im Code haben wir sie NodeValues genannt. Nur der letzte Term hat sich verändert, also müssen wir die Ableitung bilden:
 $$\frac{\Delta Z_2 }{\Delta b_2 } = \frac{ a_1 * w_2 + b+h -(a_1 * w_2 + b) }{ h }$$
 $$\frac{\Delta Z_2 }{\Delta b_2 } = \frac{ a_1 * w_2 + b+h -a_1 * w_2 - b }{ h }$$
 $$\frac{\Delta Z_2 }{\Delta b_2 } = \frac{ a_1 * w_2 +h -a_1 * w_2 }{ h }$$
@@ -793,16 +793,18 @@ Die Ableitung entspricht eins. Das bedeutet, dass die Änderungsrate für die Bi
 $$\ddot{A}nderungsrate_b = 1*NodeValues$$
 
 \subsection{Biases im Code}
-Zunächst brauchen wir genau wie bei den Gewichten und der Änderungsrate für die Gewichte, eine Instanzvariable für die Biases in der Layer Klasse, und eine Instanzvariable für die Änderungsrate der Biases:\begin{lstlisting}[language=Java]
+Zunächst brauchen wir genau wie bei den Gewichten und der Änderungsrate für die Gewichte, eine Instanzvariable für die Biases in der Layer-Klasse und eine Instanzvariable für die Änderungsrate der Biases:
+\begin{lstlisting}[language=Java]
 double[] bias;
 // --> Steigung der Cost Funktion im Bezug auf die Biases b
 double[] CostSteigungB;
 \end{lstlisting}
-Die Biases werden zum Schluss verrechnet, und das auch nur einmal, und nicht mit jedem Gewicht. Daher brauchen wir nur ein einfaches Array, und dieses muss so groß sein, wie die Anzahl an Knoten in der Schicht. Genau wie die Gewichte, müssen die Biases ebenfalls mit Zufallszahlen initialisiert werden. Dies geschieht im Konstruktor:\begin{lstlisting}[language=Java]
+Die Biases werden zum Schluss verrechnet, dass auch nur einmal und nicht mit jedem Gewicht. Daher brauchen wir nur ein einfaches Array und dieses muss so groß sein wie die Anzahl an Knoten in der Schicht. Genau wie die Gewichte, müssen die Biases ebenfalls mit Zufallszahlen initialisiert werden. Dies geschieht im Konstruktor:\begin{lstlisting}[language=Java]
 bias = NNMath.RandomDoubleArray(numOutputNodes);
 CostSteigungB = new double[numOutputNodes];
 \end{lstlisting}
-Dann kommen wir zu Methode "CalculateOutputs". Anstatt die Variable weightedInput am Anfang der äußeren Schleife mit 0 zu initialisieren, fangen wir mit den Biases an:\begin{lstlisting}[language=Java]
+Dann kommen wir zu Methode "CalculateOutputs". Anstatt die Variable weightedInput am Anfang der äußeren Schleife mit 0 zu initialisieren, fangen wir mit den Biases an:
+\begin{lstlisting}[language=Java]
 public double[] CalculateOutputs(double[] inputs) {
     this.inputs = inputs;
     Activation activ = Activation.geActivation();
@@ -833,7 +835,8 @@ public void UpdateGradients(double[] nodeValues) {
 }
 \end{lstlisting}
 
-Und zuletzt  müssen die Änderungsraten auch von den Biases abgezogen werden, und danach müssen die Änderungsraten zurückgesetzt werden. Die Änderungsrate muss ebenfalls mit der LearnRate multipliziert werden.\begin{lstlisting}[language=Java]
+Und zuletzt  müssen die Änderungsraten auch von den Biases abgezogen werden. Danach müssen die Änderungsraten zurückgesetzt werden. Die Änderungsrate muss ebenfalls mit der LearnRate multipliziert werden.
+\begin{lstlisting}[language=Java]
 public void ApplyGradient(double learnrate) {
     for (int i = 0; i < numOutputNodes; i++) {
         for (int j = 0; j < numInputNodes; j++) {
@@ -849,10 +852,10 @@ public void ClearGradient() {
     this.CostSteigungB = new double[numOutputNodes];
 }
 \end{lstlisting}
-Das Netzwerk verfügt nun über Biases, und damit über eine größere Flexibilität. Als nächstes Testen wir das neue Netzwerk.
+Das Netzwerk verfügt nun über Biases und damit über eine größere Flexibilität. Als nächstes Testen wir das neue Netzwerk.
 \subsection{Testreihen mit Biases}
-Zunächst einmal Testen wir die LearnRate. Unter Umständen kann sich etwas geändert haben.
-Die nachfolgende Tabelle enthält erst mal um einen Vergleich zu schaffen noch Ergebnisse ohne Biases. Die LearnRate wird für jeden Durchlauf angepasst. Die erste Learnrate startet bei 0.009 und wird mit jeder Iteration um 0.001 herabgesetzt.
+Zunächst testen wir die LearnRate. Unter Umständen kann sich etwas geändert haben.
+Die nachfolgende Tabelle enthält erst mal, um einen Vergleich zu schaffen, noch Ergebnisse ohne Biases. Die LearnRate wird für jeden Durchlauf angepasst. Die erste Learnrate startet bei 0,009 und wird mit jeder Iteration um 0,001 herabgesetzt.
 
 \begin{table}[H]
     \centering
@@ -891,9 +894,9 @@ Die gleichen LernRates werden für die nächste Tabelle verwendet, allerdings si
         [784, 100, 10] & 60000 & 1 & 1 & 0.001 & 72,84\% & 73,47\% \\ \hline
     \end{tabular}
 \end{table}
-Im Vergleich ist nicht direkt sichtbar, ob das Netzwerk mit Biases bessere Ergebnisse erzielt. Bei einer LernRate von 0.003 sehen wir keine Verbesserung, sondern sogar eine niedrigere Genauigkeit.
-Dennoch ist es ratsam, Netzwerke mit Biases zu verwenden. Nehmen wir an, alle Pixel in einem Bild wären leer, dann würde bei einem Netzwerk ohne Biases in jedem Output nur 0 als Ergebnis möglich sein. Sollten wir das Netzwerk darauf trainieren wollen, auch unbeschriebene Bilder erkennen zu können, wäre das ohne Biases schlicht nicht möglich. In unserem Beispiel mit dem MNIST Datensatz ist der nutzen nicht direkt sichtbar, aber für andere Aufgaben kann es unumgänglich sein, Biases zu verwenden.
-Zur Vollständigkeit hier noch ein Vergleich mit Training von verschieden vielen Epochen. Dabei ist auch keine große Verbesserung festzustellen. Unterschiede von 1-2\% können dem Zufall zugeschrieben werden. Das liegt daran, dass das Netzwerk mit Zufallszahlen initialisiert wird, und leicht abweichende Ergebnisse damit erwartbar sind. 
+Im Vergleich ist nicht direkt sichtbar, ob das Netzwerk mit Biases bessere Ergebnisse erzielt. Bei einer LernRate von 0,003 sehen wir keine Verbesserung, sondern sogar eine niedrigere Genauigkeit.
+Dennoch ist es ratsam, Netzwerke mit Biases zu verwenden. Nehmen wir an, alle Pixel in einem Bild wären leer, dann würde bei einem Netzwerk ohne Biases in jedem Output nur 0 als Ergebnis möglich sein. Sollten wir das Netzwerk darauf trainieren wollen, auch unbeschriebene Bilder erkennen zu können, wäre das ohne Biases schlicht nicht möglich. In unserem Beispiel, mit dem MNIST Datensatz, ist der Nutzen nicht direkt sichtbar, aber für andere Aufgaben kann es unumgänglich sein, Biases zu verwenden.
+Zur Vollständigkeit ist hier noch ein Vergleich, mit Training von verschieden vielen Epochen. Dabei ist auch keine große Verbesserung festzustellen. Unterschiede von 1-2\% können dem Zufall zugeschrieben werden. Das liegt daran, dass das Netzwerk mit Zufallszahlen initialisiert wird und leicht abweichende Ergebnisse damit erwartbar sind. 
 \begin{table}[H]
     \textbf{Ohne Bias}
     \centering
@@ -929,7 +932,7 @@ Zur Vollständigkeit hier noch ein Vergleich mit Training von verschieden vielen
 \end{table}
 Eine letzte Möglichkeit, vielleicht doch einen Nutzen sichtbar zu machen, könnte in der Verringerung der Knoten in den versteckten Schichten liegen. 
 These: Die erhöhte Flexibilität könnte das Netzwerk dahingehend effizienter machen, dass es weniger Knoten braucht, um vergleichbare Ergebnisse zu erzielen.
-Die Test, die in den nächsten Tabellen dokumentiert wurden unterscheiden sich in der Anzahl der Knoten und Schichten. In der Spalte HLayerSizes steht jede Zahl für eine Schicht, und die Zahl selber entspricht den Knoten auf der jeweiligen Schicht. Die erste Schicht ist die Input Schicht, ihre Größe wird vom Datensatz bestimmt, die letzte Zahl ist die Output Schicht, sie entspricht den möglichen Ergebnissen des Netzwerkes. Die Schichten dazwischen sind die versteckten Schichten.
+Die Tests, die in den nächsten Tabellen dokumentiert wurden, unterscheiden sich in der Anzahl der Knoten und Schichten. In der Spalte HLayerSizes steht jede Zahl für eine Schicht und die Zahl selber entspricht den Knoten auf der jeweiligen Schicht. Die erste Schicht ist die Input-Schicht, ihre Größe wird vom Datensatz bestimmt, die letzte Zahl ist die Output-Schicht, sie entspricht den möglichen Ergebnissen des Netzwerkes. Die Schichten dazwischen sind die versteckten Schichten.
 \begin{table}[H]
     \centering
     \textbf{Ohne Bias}
@@ -953,7 +956,7 @@ Die Test, die in den nächsten Tabellen dokumentiert wurden unterscheiden sich i
 
 \begin{table}[H]
     \centering
-    \textbf{With Bias}
+    \textbf{Mit Bias}
     \begin{tabular}{|l|l|l|l|l|l|l|}
     \hline
         HLayersSizes & DataSize & Epochen & BatchSize & Learnrate & ACtrainingD & ACtestD \\ \hline
@@ -974,12 +977,13 @@ Die Test, die in den nächsten Tabellen dokumentiert wurden unterscheiden sich i
 Leider kann die These mit diesem Datensatz nicht bestätigt werden. Ein anderer Datensatz könnte die These bestätigen, oder die These ist vollständig falsch.
 \section{Batches}
 \subsection{Motivation}
-Bisher waren wir darauf angewiesen, dass wir sehr geringe LearnRates verwenden, um zu vermeiden, dass das Netzwerk zu stark in eine Richtung neigt, wenn es ein Bild gelernt hat. Wie bereits zuvor erwähnt, Sieht die Cost Funktion für jedes Lable anders aus, an sich sogar für jedes Bild anders. Das ziel des Gradient Descent Verfahrens ist es, einen guten Kompromiss zwischen den verschiedenen Tiefpunkten der Cost Funktionen der Bilder zu finden.
-Bisher wurden die Gewichte nach jedem Bild, das gelernt wurden, angepasst, das heißt dass sich das Netzwerk in dem Moment jeweils mehr auf das Bild spezialisiert hat. Ein besserer Ansatz wäre es, mehrere Bilder nacheinander zu betrachten, und dann eine durchschnittliche Änderungsrate zu berechnen, die allen Bildern gleichermaßen gerecht wird. Hier kommen die Batches ins Spiel.
-Anstatt nur ein Bild zu übergeben, legen wir eine Menge an Bildern Fest (BatchSize) und übergeben diese Menge. Die Änderungsraten werden aufaddiert, und zum Schluss wird eine durchschnittliche Änderungsrate errechnet und danach mit den Gewichten und Biases verrechnet.
+Bisher waren wir darauf angewiesen, dass wir sehr geringe LearnRates verwenden, um zu vermeiden, dass das Netzwerk zu stark in eine Richtung neigt, wenn es ein Bild gelernt hat. Wie bereits zuvor erwähnt, sieht die Cost-Funktion für jedes Lable anders aus, an sich ist sie sogar für jedes Bild anders. Das Ziel des GradientDescent-Verfahrens ist es, einen guten Kompromiss zwischen den verschiedenen Tiefpunkten, der Cost-Funktionen der Bilde, zu finden.
+Bisher wurden die Gewichte nach jedem Bild, das gelernt wurden, angepasst, das heißt, dass sich das Netzwerk in dem Moment, jeweils mehr auf das Bild spezialisiert hat. Ein besserer Ansatz wäre es, mehrere Bilder nacheinander zu betrachten und dann eine durchschnittliche Änderungsrate zu berechnen, die allen Bildern gleichermaßen gerecht wird. Hier kommen die Batches ins Spiel.
+Anstatt nur ein Bild zu übergeben, legen wir eine Menge an Bildern fest (BatchSize) und übergeben diese Menge. Die Änderungsraten werden aufaddiert. Zum Schluss wird eine durchschnittliche Änderungsrate errechnet und danach mit den Gewichten und Biases verrechnet.
 \subsection{Code für die Batches}
 Die Anpassung im Code ist Dank unserer bisherigen Vorarbeit simpel.
-Wir müssen lediglich eine Schleife in der "Learn" Methode der NeuralNetwork Klasse einbauen, welche die Methode "UpdateGradient" für jedes Bild aufruft, und nach Abschluss der Schleife die Änderungsraten mit der Methode "ApplyAllGradients" an den Gewichten und Biases verrechnet. Dabei wird die LearnRate übergeben, welche jetzt, um tatsächlich den Durchschnitt zu bilden, durch die Menge der im Batch enthaltenen Bilder geteilt wird.\begin{lstlisting}[language=Java]
+Wir müssen lediglich eine Schleife in der "Learn"-Methode der NeuralNetwork-Klasse einbauen, welche die Methode "UpdateGradient" für jedes Bild aufruft und nach Abschluss der Schleife die Änderungsraten mit der Methode "ApplyAllGradients" an den Gewichten und Biases verrechnet. Dabei wird die LearnRate übergeben, welche jetzt, um tatsächlich den Durchschnitt zu bilden, durch die Menge der im Batch enthaltenen Bilder geteilt wird.
+\begin{lstlisting}[language=Java]
 // Training über Batch
 public void learn(MnistMatrix[] batch) {
     for (MnistMatrix data : batch) {
@@ -993,7 +997,7 @@ public void learn(MnistMatrix[] batch) {
 \end{lstlisting}
 \subsection{Testreihen mit Batches}
 Der erste Test wird wieder den Einfluss unterschiedlicher LearnRates untersuchen.
-In der nachfolgenden Tabelle wurden Testreihen mit variierender LearnRate erstellt. 
+In der nachfolgenden Tabelle wurden Testreihen mit variierender LearnRate erstellt: 
 \begin{table}[H]
     \centering
     \begin{tabular}{|l|l|l|l|l|l|l|}
@@ -1013,9 +1017,9 @@ In der nachfolgenden Tabelle wurden Testreihen mit variierender LearnRate erstel
         [784, 100, 10] & 60000 & 1 & 50 & 0.002 & 22,73\% & 21,69\% \\ \hline
     \end{tabular}
 \end{table}
-Anhand der Daten wird klar, dass im Vergleich zu den früheren Tests deutlich größere Learnrates gute Ergebnisse erzielen. Der optimale Wert scheint bei 0.2 zu liegen. Dies liegt daran, dass durch die Batches ein Durchschnittswert errechnet wird, der einen guten Kompromiss für alle Bilder darstellt, die im Batch vorhanden sind. Dadurch kommt es nicht zu dem zuvor beobachteten Phänomen, dass durch eine große learnRate das Netzwerk zu sehr ein bestimmtes Bild lernt, und sich dadurch sehr weit von möglichen Ergebnissen anderer Bilder entfernt. Außerdem muss erwähnt werden, dass die Gewichte immer erst nach einem Batch angepasst werden, sodass es zu viel weniger Anpassungen kommt. 
+Anhand der Daten wird klar, dass im Vergleich zu den früheren Tests, deutlich größere Learnrates gute Ergebnisse erzielen. Der optimale Wert scheint bei 0,2 zu liegen. Dies liegt daran, dass durch die Batches ein Durchschnittswert errechnet wird, der einen guten Kompromiss für alle Bilder darstellt, die im Batch vorhanden sind. Dadurch kommt es nicht zu dem zuvor beobachteten Phänomen, dass durch eine große LearnRate das Netzwerk zu sehr ein bestimmtes Bild lernt und sich dadurch sehr weit von möglichen Ergebnissen anderer Bilder entfernt. Außerdem muss erwähnt werden, dass die Gewichte immer erst nach einem Batch angepasst werden, sodass es zu viel weniger Anpassungen kommt. 
 
-In der nächsten Testreihe werden jeweils zwei Tests für die LearnRates 0.1 und 0.2 mit Batch Größen von 50, sowie eine Testreihe immer zu Anfang mit einer Batch Größen von 1, mit der vorher gefundenen LearnRate von 0.003, um besser vergleichen zu können. 
+In der nächsten Testreihe werden jeweils zwei Tests für die LearnRates 0,1 und 0,2 mit Batch-Größen von 50, sowie eine Testreihe immer zu Anfang mit einer Batch-Größe von 1, mit der vorher gefundenen LearnRate von 0,003 dargestellt, um besser vergleichen zu können. 
 
 \begin{table}[H]
     \centering
@@ -1036,8 +1040,8 @@ In der nächsten Testreihe werden jeweils zwei Tests für die LearnRates 0.1 und
         [784, 100, 10] & 60000 & 20 & 50 & 0.2 & 88,49\% & 89,05\% \\ \hline
     \end{tabular}
 \end{table}
-Es ist ersichtlich, dass die Batchsizes einen Positiven Einfluss haben. Allerdings wird hier auch klar, dass die LearnRate je nach Größe der Batches angepasst werden muss. Bei einer Epoche ist die LearnRate 0.2 effizienter, bei 20 Epochen allerdings 0.1. \\
-In der nächsten Tabelle sollen unterschiedlich Große Batch Größen getestet werden. 
+Es ist ersichtlich, dass die Batchsizes einen positiven Einfluss haben. Allerdings wird hier auch klar, dass die LearnRate je nach Größe der Batches angepasst werden muss. Bei einer Epoche ist die LearnRate 0,2 effizienter, bei 20 Epochen allerdings 0,1. \\
+In der nächsten Tabelle sollen unterschiedlich große Batch-Größen getestet werden: 
 
 \begin{table}[H]
     \centering
@@ -1068,13 +1072,13 @@ In der nächsten Tabelle sollen unterschiedlich Große Batch Größen getestet w
 \end{table}
 
 Besonders auffällig ist aber, dass das Netzwerk deutlich weniger Zeit braucht, um die Daten zu trainieren. In den Testreihen die oben durchgeführt wurden, haben die Netzwerke mit großen Batchsizes die Netzerke regelmäßig überholt, ohne an Genauigkeit einzubüßen.
-Das liegt vermutlich daran, dass am ende eines Batches immer alles Gewichte angepasst werden müssen. Zuvor wurde nach jedem Bild die Gewichte angepasst, sozusagen bei der Batchsize 1. Nun werden die gewichte allerdings immer erst nach mehreren bildern angepasst. Das spart viele Rechenoperationen, und verkürzt somit die Lernzeiten. \\
-Um dies noch weiter zu verbessern, könnte man durch Paralelisierung die Rechenzeiten noch weiter kürzen. Jedes Bild in einer Batch geht immerhin von den gleichen Gewichten aus. Das bedeutet, dass jedes Bild in einem Batch parallel berechnet werden kann. Dies würde die Effizienz noch weiter steigern.
+Das liegt vermutlich daran, dass am Ende eines Batches immer alles Gewichte angepasst werden müssen. Zuvor wurden nach jedem Bild die Gewichte angepasst, sozusagen bei der Batchsize 1. Nun werden die Gewichte allerdings immer erst nach mehreren Bildern angepasst. Das spart viele Rechenoperationen und verkürzt somit die Lernzeiten. \\
+Um dies noch weiter zu verbessern, könnte man durch Parallelisierung die Rechenzeiten noch weiter kürzen. Jedes Bild in einem Batch geht immerhin von den gleichen Gewichten aus. Das bedeutet, dass jedes Bild in einem Batch parallel berechnet werden kann. Dies würde die Effizienz noch weiter steigern.
 
 \section{Overfitting}
 Dieses letzte Kapitel widmet sich einem der häufigsten Probleme der Neuronalen Netzwerke, dem Overfitting. \\
 Das Overfitting entsteht, wenn ein Datensatz zu häufig gelernt wird. Das Netzwerk fängt irgendwann an, die Bilder auswendig zu lernen, anstatt generelle Muster zu erkennen und daraus Schlüsse zu ziehen. 
-Um zu erkennen, ob dieser Fall eingetreten ist, berechnet man die Genauigkeit nicht nur auf dem Trainingsdatensatz, sondern eben auch auf dem Testdatensatz. Wenn eine Genauigkeit von beinahe 100\% auf dem Testdatensatz erreicht wird, aber dieses Ergebnis nicht auf dem Testdatensatz wiedergespiegelt wird, dann liegt aller Wahrscheinlichkeit nach das Overfitting vor. Das Netzwerk hat dann den Trainingsadatensatz kaum verstanden, sondern angefangen, ihn auswendig zu lernen.
+Um zu erkennen, ob dieser Fall eingetreten ist, berechnet man die Genauigkeit nicht nur auf dem Trainingsdatensatz, sondern eben auch auf dem Testdatensatz. Wenn eine Genauigkeit von beinahe 100\% auf dem Testdatensatz erreicht wird, aber dieses Ergebnis nicht auf dem Testdatensatz widergespiegelt wird, dann liegt aller Wahrscheinlichkeit nach das Overfitting vor. Das Netzwerk hat dann den Trainingsdatensatz kaum verstanden, sondern angefangen, ihn auswendig zu lernen.
 Die nächste Tabelle zeigt das Ergebnis eines Netzwerkes, welches 300 Epochen trainiert hat:
 
 \begin{table}[H]
@@ -1086,7 +1090,7 @@ Die nächste Tabelle zeigt das Ergebnis eines Netzwerkes, welches 300 Epochen tr
     \end{tabular}
 \end{table}
 
-Das erwartete Ergebnis ist hier noch nicht eingetreten. Die Erklärung dafür könnte an der größe des Netzwerkes und der größe des Datensatzes liegen. Der Datensatz ist einfach zu groß, um von dem kleinen Netzwerk auswendig gelernt zu werden, daher ist es gezwungen, zu abstrahieren.\\
+Das erwartete Ergebnis ist hier noch nicht eingetreten. Die Erklärung dafür, könnte an der Größe des Netzwerkes und der Größe des Datensatzes liegen. Der Datensatz ist einfach zu groß, um von dem kleinen Netzwerk auswendig gelernt zu werden, daher ist es gezwungen, zu abstrahieren.\\
 Der nächste Versuch wird mit einem deutlich größeren Netzwerk gemacht. Dieses Netzwerk hat 3 versteckte Schichten, mit jeweils 200 Knoten. Außerdem wird der Datensatz deutlich verkleinert. Anstatt der vollen 60.000 Bilder, werden hier nur 300 verwendet. Damit sollte sich demonstrieren lassen, wie Overfitting aussieht:
 
 \begin{table}[H]
@@ -1098,18 +1102,18 @@ Der nächste Versuch wird mit einem deutlich größeren Netzwerk gemacht. Dieses
     \end{tabular}
 \end{table}
 
-Hier ist klar ein großer Unterschied zwischen dem Trainings- und dem Testdatensatz zu erkennen. 93\% auf dem Trainingsdatensatz, und nur 65\% auf dem Testdatensatz zeigen deutlich, dass das Netzwerk große Probleme hat, Bilder, die es noch nie gesehen hat, zu klassifizieren.\\
-Um solche Probleme zu vermeiden, sollte man die Epochen, die Größe des Datensatzes und die Größe des Netzwerkes sorgfältig wählen. Außerdem kann eine Stoppbedingung einprogrammiert werden. In regelmäßigen Abständen kann man die Cost Funktion auf den Testdaten aufrufen, und nach einer Tendenz suchen. Wenn die Cost Funktion sinkt, soll weiter gelernt werden. Wenn sie allerdings wieder steigt, sollte das Lernen abgebrochen werden.
+Hier ist klar ein großer Unterschied zwischen dem Trainings- und dem Testdatensatz zu erkennen. 93\% auf dem Trainingsdatensatz, aber nur 65\% auf dem Testdatensatz zeigen deutlich, dass das Netzwerk große Probleme hat, Bilder, die es noch nie gesehen hat, zu klassifizieren.\\
+Um solche Probleme zu vermeiden, sollte man die Epochen, die Größe des Datensatzes und die Größe des Netzwerkes sorgfältig wählen. Außerdem kann eine Stoppbedingung einprogrammiert werden. In regelmäßigen Abständen kann man die Cost-Funktion auf den Testdaten aufrufen und nach einer Tendenz suchen. Wenn die Cost-Funktion sinkt, soll weiter gelernt werden. Wenn sie allerdings wieder steigt, sollte das Lernen abgebrochen werden.
 
 \cleardoublepage
 \section{Fazit und Ausblick}
 Das Netzwerk funktioniert und liefert gute Ergebnisse. Die Funktionsweise und die Programmierung wurden dargestellt und anschaulich gemacht.
-Mit so einem Netzwerk können einige Aufgaben bereits automatisiert werden, vorrausgesetzt das ein Datensatz zur Verfügung steht, um das Netzwerk zu trainieren.\\
+Mit so einem Netzwerk können einige Aufgaben bereits automatisiert werden, vorausgesetzt das ein Datensatz zur Verfügung steht, um das Netzwerk zu trainieren.\\
 Es gibt noch eine Menge Möglichkeiten, die Leistung des Netzwerkes zu verbessern. Diese Anpassungen könnten in zukünftigen Entwicklungsiterationen zum Netzwerk hinzugefügt werden.\\
-Eine Möglichkeit, die Leistung zu verbessern, ist es, einen automatischen Learn Stop einzurichten. Dazu kann man die Cost Funktion verwendet werden. Nach jeder lern-Iteration könnte man Prüfen, ob sich die Cost weiterhin verringert. Wenn dem so ist, soll weiter gelernt werden. Sobald die Cost aber eine Weile lang stagniert, oder sich sogar wieder erhöht, zum Beispiel durch Overfitting, sollte der Lernprozess abgebrochen werden. Nach wie vielen Iterationen davon ausgegangen werden kann, dass es stagniert, muss auch festgelegt werden. Gerade beim lernen mit Batches kommt es zu einem Verhalten der Cost funktion, die auf einem Grahen etwas sprunghaft aussieht, und als "noisy" bezeichnet wird. Das heist es kommt zu ausschlägen die den Wert der Cost Funktion wieder erhöht. Das ist normal, und darf in diesem Zusammenhang natürlich nicht als verschlechterung angesehen werden, sonst würde der Lernprozess zu früh abgebrochen werden. Man sollte also eher eine Durchschnittliche verbesserung über den letzten Iterationen dazu betrachten.\\
-Weitere Verbesserungen bringen die sogenannten Optimierer. Eine Möglichkeit bietet das "Momentum". Dabei wird die Änderungsrate der vorherigen Iteration als Anhaltspunkt genommen, wie stark sich das Netzwerk noch verändert. Das heißt je größer die letzte Änderungsrate war, desto größer ist das Momentum, welches mit der aktuellen Änderungsrate verrechnet wird. Dadurch beschleunigt sich die Anpassung der Gewichte wenn es noch weit vom Tiefpunkt entfernt ist, und verlangsamt sich, wenn es sich annähert. Es gibt noch weiter Regularisierungsmethoden, die man implementieren könnte.\\
-Um außerdem noch bessere Ergebnisse auf dem MNIST Datensatz speziell zu erlangen, kann man das sogenannte "Noise" in den Datensatz einführen. Der MNIST Datensatz ist ein Neuronales Netzwerk vereineitlicht worden. Dadurch kann es dazu kommen, dass sich das Netzwerk auf bestimmte Gegebenheiten verlässt, wie zB die Größe der Zahl, der Ausrichtung, die Zentrierung im Bild, sowie die Abwesenheit von falschen Pixeln.\\
-Wenn man unser Netzwerk nun in einem Programm einsetzten möchte, welches dem Anwender die Möglichkeit gibt, in einem Fenster eine Zahl zu schreiben, welche dann vom Netzwerk Klassifiziert wird, so würde das Netzwerk vieleich nur 20 bis 30\% erkennen. Das liegt daran, dass es sich nicht mehr auf eine bestimmte Größe und Ausrichtung verlassen kann. Um das Netzwerk auf diese Unregelmäßigkeiten vorzubereiten, könnte man einen Zufallsgenerator vor jedes Bild schalten, welcher die einzelnen Datensätze leicht verändert. Das heißt bevor jedes Bild vom Netzwerk gelernt wird, wird zuerst die Rotation und Größe des Bildes angepasst, sowie ein paar falsche Pixel eingefügt. Dieses Rauschen im Datensatz würde dafür sorgen, dass das Netzwerk länger braucht, um zu lernen, also müsste man auch mehr Epochen einstellen. Das Netzwerk kann sich dann nicht mehr auf diese Faktoren verlassen, und muss die Problemstellung besser abstrahieren. Damit wäre es dann auch möglich, die Zahlen in einem Eingabefenster dynamisch zu klassifizieren.\\
+Eine Möglichkeit, die Leistung zu verbessern, ist es, einen automatischen Learn-Stop einzurichten. Dazu kann man die Cost-Funktion verwendet werden. Nach jeder Lern-Iteration könnte man prüfen, ob sich die Cost weiterhin verringert. Wenn dem so ist, soll weiter gelernt werden. Sobald die Cost aber eine Weile lang stagniert, oder sich sogar wieder erhöht, zum Beispiel durch Overfitting, sollte der Lernprozess abgebrochen werden. Nach wie vielen Iterationen davon ausgegangen werden kann, dass es stagniert, muss auch festgelegt werden. Gerade beim Lernen mit Batches, kommt es zu einem Verhalten der Cost-Funktion, die auf einem Graphen etwas sprunghaft aussieht und als "noisy" bezeichnet wird. Das heißt es kommt zu Ausschlägen die den Wert der Cost-Funktion wieder erhöht. Das ist normal und darf in diesem Zusammenhang natürlich nicht als Verschlechterung angesehen werden, sonst würde der Lernprozess zu früh abgebrochen werden. Man sollte also eher eine durchschnittliche Verbesserung, über den letzten Iterationen, dazu betrachten.\\
+Weitere Verbesserungen bringen die sogenannten Optimierer. Eine Möglichkeit bietet das "Momentum". Dabei wird die Änderungsrate der vorherigen Iteration als Anhaltspunkt genommen, wie stark sich das Netzwerk noch verändert. Das heißt je größer die letzte Änderungsrate war, desto größer ist das Momentum, welches mit der aktuellen Änderungsrate verrechnet wird. Dadurch beschleunigt sich die Anpassung der Gewichte, wenn es noch weit vom Tiefpunkt entfernt ist und verlangsamt sich, wenn es sich diesem annähert. Es gibt noch weitere Regularisierungsmethoden, die man implementieren könnte.\\
+Um außerdem noch bessere Ergebnisse, auf dem MNIST-Datensatz speziell, zu erlangen, kann man das sogenannte "Noise" in den Datensatz einführen. Der MNIST-Datensatz ist ein Neuronales Netzwerk vereinheitlicht worden. Dadurch kann es dazu kommen, dass sich das Netzwerk auf bestimmte Gegebenheiten verlässt, wie zum Beispiel die Größe der Zahl, der Ausrichtung, die Zentrierung im Bild, sowie die Abwesenheit von falschen Pixeln.\\
+Wenn man unser Netzwerk nun in einem Programm einsetzten möchte, welches dem Anwender die Möglichkeit gibt, in einem Fenster eine Zahl zu schreiben, welche dann vom Netzwerk Klassifiziert wird, so würde das Netzwerk vieleicht nur 20 bis 30\% erkennen. Das liegt daran, dass es sich nicht mehr auf eine bestimmte Größe und Ausrichtung verlassen kann. Um das Netzwerk auf diese Unregelmäßigkeiten vorzubereiten, könnte man einen Zufallsgenerator vor jedes Bild schalten, welcher die einzelnen Datensätze leicht verändert. Das heißt, bevor jedes Bild vom Netzwerk gelernt wird, wird zuerst die Rotation und Größe des Bildes angepasst, sowie ein paar falsche Pixel eingefügt. Dieses rauschen im Datensatz würde dafür sorgen, dass das Netzwerk länger braucht, um zu lernen, also müsste man auch mehr Epochen einstellen. Das Netzwerk kann sich dann nicht mehr auf diese Faktoren verlassen und muss die Problemstellung besser abstrahieren. Damit wäre es dann auch möglich, die Zahlen in einem Eingabefenster dynamisch zu klassifizieren.\\
 
 
 \cleardoublepage
