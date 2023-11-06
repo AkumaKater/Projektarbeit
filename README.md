@@ -1,4 +1,4 @@
-# Wie Programmiert man ein einfaches Neuronales Netzwerk
+# Wie programmiert man ein einfaches Neuronales Netzwerk
 
 Das hier ist meine Projektarbeit. Das Thema ist "Wie Programmiert man ein einfaches Neuronales Netzwerk".
 
