@@ -19,6 +19,8 @@ public class Main {
         mBuffer.loadMNIST();
         mBuffer.splitData(splitIndex);
 
+        Activation.setActivation(config.getValue("Activation"));
+
         NeuralNetwork nn = new NeuralNetwork(config.getLearnRate(), config.getLayers());
 
         for(int i=0; i<(splitIndex*TrainingCycles/BatchSize); i++){

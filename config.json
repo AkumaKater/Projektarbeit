@@ -1,7 +1,8 @@
-LayerSizes=784,200,200,200,10
-SplitIndex=300
-TrainingCycles=300
+LayerSizes=784,100,10
+SplitIndex=60000
+TrainingCycles=5
 LearnRate=0.2
-BatchSize=50
-PerformanceNotes=FFN-Ausgabe/Overfitting/PN(Overfitting)V2.html
-Visualization=FFN-Ausgabe/Visualization.html
+BatchSize=64
+Activation=Sigmoid
+PerformanceNotes=FFN-Ausgabe/Kolloquium/KolloquiumTabelle.html
+Visualization=FFN-Ausgabe/Kolloquium/Visualization.html
